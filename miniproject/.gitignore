@@ -16,7 +16,7 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-!**/src/main/**/miniproject/**
+!**/src/main/java/com/example/miniproject/**
 !**/src/resources/**
 
 ### IntelliJ IDEA ###

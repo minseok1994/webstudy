@@ -1,8 +1,6 @@
 package com.example.miniproject.model.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,11 +14,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Entity(name = "UserEntity")
-@Table(name = "customer")
-public class UserEntity {
+@Entity(name = "UsersEntity")
+@Table(name = "users")
+public class UsersEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String pw;
     private String email;
@@ -28,4 +25,5 @@ public class UserEntity {
     private String job;
     private String single;
     private String mbti;
+    private String role;
 }

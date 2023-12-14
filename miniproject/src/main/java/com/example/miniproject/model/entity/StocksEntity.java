@@ -21,11 +21,13 @@ import lombok.ToString;
 public class StocksEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long stock_id;
+    private Long code;
     private String name;
     private Long close;
     private Long open;
     private Long high;
     private Long low;
     private Long volume;
+    private Long change;
 }

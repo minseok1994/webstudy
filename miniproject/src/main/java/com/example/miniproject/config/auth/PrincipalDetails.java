@@ -18,14 +18,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
         Collection<GrantedAuthority> collect = new ArrayList<>();
         // collect.add(new SimpleGrantedAuthority(user.getRole()));
         collect.add(new GrantedAuthority() {
 
             @Override
             public String getAuthority() {
-                // TODO Auto-generated method stub
                 return usersEntity.getRole();
             }
 
@@ -36,14 +34,12 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        // TODO Auto-generated method stub
-        return usersEntity.get();
+        return usersEntity.getPassword();
     }
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
-        return usersEntity.getUserId();
+        return usersEntity.getUsername();
     }
 
     @Override

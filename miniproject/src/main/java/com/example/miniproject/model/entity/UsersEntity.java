@@ -1,5 +1,6 @@
 package com.example.miniproject.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -17,13 +18,11 @@ import lombok.ToString;
 @Entity(name = "UsersEntity")
 @Table(name = "users")
 public class UsersEntity {
+
     @Id
-    private String id;
-    private String pw;
+    private String username;
+    private String password;
+    @Column(unique = true)
     private String email;
-    private Long age;
-    private String job;
-    private String single;
-    private String mbti;
     private String role;
 }

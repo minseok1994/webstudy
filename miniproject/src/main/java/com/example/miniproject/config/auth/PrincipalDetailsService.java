@@ -21,7 +21,6 @@ public class PrincipalDetailsService implements UserDetailsService {
     // 시큐리티 session -> Authentication -> UserDetails
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO Auto-generated method stub
         UsersEntity userEntity = usersDao.findByUserId(username);
         log.info("[PrincipalDetailsService][loadUserByUsername] start");
         if (userEntity != null) {

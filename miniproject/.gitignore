@@ -1,5 +1,7 @@
+# .gitignore
+
 HELP.md
-.gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -10,9 +12,9 @@ build/
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
-.sts4-cache
+.sts4-cache/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
@@ -20,7 +22,7 @@ bin/
 !**/src/resources/**
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr

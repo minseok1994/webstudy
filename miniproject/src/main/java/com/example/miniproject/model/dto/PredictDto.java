@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PredictDto {
-    private Long id;
+    private Long predictId;
     private String name;
     private Long today;
     private Long oneweek;

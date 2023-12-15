@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class StocksDto {
-    private Long stock_id;
+    private Long stockId;
     private Long code;
     private String name;
     private Long close;

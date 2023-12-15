@@ -21,7 +21,7 @@ import lombok.ToString;
 public class PredictEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long predictId;
     private String name;
 
     private Long today;

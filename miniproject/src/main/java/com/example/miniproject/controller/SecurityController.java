@@ -27,43 +27,37 @@ public class SecurityController {
 
     @GetMapping("/")
     public String index() {
-        log.info("[SecurityController] index start!!");
-        return "index";
+        log.info("[SecurityController][main] start");
+        return "main";
     }
 
     @GetMapping("/user")
     public @ResponseBody String user() {
-        log.info("[SecurityController] user start!!");
+        log.info("[SecurityController][user] start");
         return "user";
     }
 
     @GetMapping("/admin")
     public @ResponseBody String admin() {
-        log.info("[SecurityController] admin start!!");
+        log.info("[SecurityController][admin] start");
         return "admin";
-    }
-
-    @GetMapping("/manager")
-    public @ResponseBody String manager() {
-        log.info("[SecurityController] manager start!!");
-        return "manager";
     }
 
     @GetMapping("/loginForm")
     public String loginForm() {
-        log.info("[SecurityController] loginForm start!!");
+        log.info("[SecurityController][loginForm] start");
         return "loginForm";
     }
 
     @GetMapping("/joinForm")
     public String joinForm() {
-        log.info("[SecurityController] joinForm start!!");
+        log.info("[SecurityController][joinForm] start!!");
         return "joinForm";
     }
 
     @PostMapping("/join")
     public String join(@ModelAttribute UsersDto usersDto) {
-        log.info("[SecurityController] join start!!");
+        log.info("[SecurityController][join] start!!");
         log.info(usersDto.toString());
 
         usersDto.setRole("USER");
@@ -91,7 +85,7 @@ public class SecurityController {
         return "secured";
     }
 
-    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("/secured-roles")
     public @ResponseBody String securedRoles() {
         return "securedRoles";

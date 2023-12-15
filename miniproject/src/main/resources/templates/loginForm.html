@@ -1,14 +1,25 @@
-{{> /layout/header}}
+{{> /layout/headerno}}
 
-    <h1>로그인 페이지</h1>
-    <hr>
-    <form action="/login" method="post">
-        <input type="text" name="username" placeholder="User Name" />
-        <br />
-        <input type="password" name="password" placeholder="Password"/>
-        <br />
-        <input type="submit" name="로그인"/>
-    </form>
-    <a href="/joinForm">회원가입을 아직 하지 않으셨어요?</a>
-
+<div class="flex justify-center items-center h-screen">
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">로그인 페이지</h1>
+        <hr class="mb-4">
+        <form action="/login" method="post" class="space-y-3">
+            <input type="text" name="username" placeholder="ID를 입력하세요" class="px-4 py-2 border rounded w-full"/>
+            <input type="password" name="password" placeholder="Password를 입력하세요" class="px-4 py-2 border rounded w-full"/>
+            <input type="submit" value="로그인" class="px-4 py-2 bg-blue-500 text-white rounded w-full cursor-pointer"/>
+        </form>
+        <a id="authButton" href="joinForm" class="mt-4 px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer block text-center">회원가입</a>
+    </div>
+</div>
+<script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginError = urlParams.get('error');
+        if (loginError === 'true') {
+            alert('아이디 혹은 패스워드를 틀렸습니다.');
+        }
+    };
+</script>
 {{> /layout/footer}}
+

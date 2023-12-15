@@ -9,6 +9,12 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.miniproject.config.auth.CustomAuthenticationFailureHandler;
+import com.example.miniproject.config.auth.CustomAuthenticationSuccessHandler;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록이 됩니다.
 @EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
@@ -22,7 +28,7 @@ public class SecurityConfig {
     // Configuring HttpSecurity
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+        log.info("[SecurityConfig][filterChain] start");
         http.csrf(AbstractHttpConfigurer::disable);
         http
                 .authorizeHttpRequests(authorize -> authorize
@@ -34,8 +40,8 @@ public class SecurityConfig {
                 .formLogin(formLogin -> formLogin
                         .loginPage("/loginForm")
                         .loginProcessingUrl("/login") // login 주소가 호출이 되면, PrincipalDetailsService.loadUserByUsername()
-                                                      // 실행
-                        .defaultSuccessUrl("/") // 시큐리티 로그인 성공시 해당 url 주소로 이동
+                        .successHandler(new CustomAuthenticationSuccessHandler()) // 성공 핸들러 추가
+                        .failureHandler(new CustomAuthenticationFailureHandler()) // 여기에 핸들러 추가
                         .permitAll());
 
         return http.build();

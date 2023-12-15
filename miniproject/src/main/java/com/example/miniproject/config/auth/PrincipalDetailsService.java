@@ -23,11 +23,12 @@ public class PrincipalDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UsersEntity userEntity = usersDao.findByUserId(username);
         log.info("[PrincipalDetailsService][loadUserByUsername] start");
-        if (userEntity != null) {
-            log.info(userEntity.toString());
-            return new PrincipalDetails(userEntity);
+
+        if (userEntity == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
 
-        return null;
+        log.info(userEntity.toString());
+        return new PrincipalDetails(userEntity);
     }
 }

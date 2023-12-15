@@ -1,16 +1,17 @@
-{{> /layout/header}}
+{{> /layout/headerno}}
 
-    <h1>회원가입 페이지</h1>
-    <hr>
-    <form action="/join" method="post">
-        <input type="text" name="username" placeholder="User Name" />
-        <br />
-        <input type="password" name="password" placeholder="Password"/>
-        <br />
-        <input type="email" name="email" placeholder="Email"/>
-        <br />
-        <input type="submit" name="회원가입"/>
-    </form>
-    <a href="/loginForm">이미 회원가입을 하셨나요?</a>
+<div class="flex justify-center items-center h-screen">
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">회원가입 페이지</h1>
+        <hr class="mb-4">
+        <form action="/join" method="post" class="space-y-3">
+            <input type="text" name="username" placeholder="ID를 입력하세요" class="px-4 py-2 border rounded w-full" required/>
+            <input type="password" name="password" placeholder="Password를 입력하세요" class="px-4 py-2 border rounded w-full" required minlength="8" placeholder="비밀번호를 입력하세요"/>
+            <input type="email" name="email" placeholder="Email을 입력하세요" class="px-4 py-2 border rounded w-full" required/>
+            <input type="submit" value="회원가입" class="px-4 py-2 bg-blue-500 text-white rounded w-full cursor-pointer"/>
+        </form>
+    </div>
+</div>
     
 {{> /layout/footer}}
+

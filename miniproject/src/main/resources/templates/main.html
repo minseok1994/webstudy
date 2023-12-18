@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인 페이지</title>
-    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" href="/main.css">
+    <link href="/table-responsive.css" media="screen" type="text/css" rel="stylesheet">
 </head>
 <body class="main-page">
-    <main>
-        <header>
+    <header>
+        <div class="logo-container">
             <h1>PrediStocks</h1>
-            <div class="datetime-container">
-                <div class="date-section">
-                    <div class="label">날짜 </div>
-                    <div class="value" id="date"></div>
-                </div>
-
-                <div class="time-section">
-                    <div class="label">현재 시간 </div>
-                    <div class="value" id="time"></div>
-                </div>
+        </div>
+        <div class="datetime-container">
+            <div class="date-section">
+                <div class="label">날짜</div>
+                <div class="value" id="date"></div>
             </div>
-            <a href="/loginForm" class="login" id="authButton">로그인</a>        
-        </header>
-        <br><br><br>
+            <div class="time-section">
+                <div class="label">현재 시간</div>
+                <div class="value" id="time"></div>
+            </div>
+        </div>
+        <a href="/loginForm" class="login-form">로그인</a>
+    </header>
+    <main>
         <h2>Stocks to Track</h2>
-        <div class="search"> 
-            <input type="text" id="stockNameSelect" placeholder="기업명 검색">
+        <div class="search">
+            <input type="text"  id="stockNameSelect" placeholder="기업명 검색">
             <button id="searchButtonSelect">검색</button>
         </div>
-        <table>
+        <table class="container">
             <thead>
-                <tr>  
-                    <th>기업명</th>
-                    <th>현재가</th>
-                    <th>전일</th>
-                    <th>고가</th>
-                    <th>저가</th>
-                    <th>거래량</th>
-                    <th>등락율</th>
-                    <th>예측</th>
+                <tr>
+                    <th><h1>기업명</h1></th>
+                    <th><h1>현재가</h1></th>
+                    <th><h1>전일</h1></th>
+                    <th><h1>고가</h1></th>
+                    <th><h1>저가</h1></th>
+                    <th><h1>거래량</h1></th>
+                    <th><h1>등락률</h1></th>
+                    <th><h1></h1></th>
                 </tr>
             </thead>
             <tbody id="stockTableBody">
@@ -50,7 +52,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><a href="/select" class="btn">예측</a>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
@@ -59,7 +61,12 @@
             <div class="spinner"></div>
         </div>
     </main>
-    <script src="./static/js/time.js"></script>
-    <script src="./static/js/search.js"></script>
+    <footer>
+    <!-- Footer Content -->
+</footer>
+<script src="/js/search.js"></script>
+<script src="/js/time.js"></script>
+</body>
+</html>
 </body>
 </html>

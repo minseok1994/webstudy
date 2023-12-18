@@ -1,72 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./static/main.css">
-    <title>상세 페이지</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrediStocks</title>
+    <link rel="stylesheet" href="./main.css">
+    <link href="table-responsive.css" media="screen" type="text/css" rel="stylesheet">
 </head>
-<body class="select-page">
-    <main>
-        <header>
-            <h1>Stock Tracker</h1>
-            <div class="datetime-container">
-                <div class="date-section">
-                    <div class="label">날짜 </div>
-                    <div class="value" id="date"></div>
-                </div>
-
-                <div class="time-section">
-                    <div class="label">현재 시간 </div>
-                    <div class="value" id="time"></div>
-                </div>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>PrediStocks</h1>
+        </div>
+        <div class="datetime-container">
+            <div class="date-section">
+                <div class="label"> </div>
+                <div class="value" id="date"></div>
             </div>
-            <a href="/loginForm" class="login" id="authButton">로그인</a>
-        </header>
-        <br><br><br>
-        <h2>Stocks to Track</h2>
-        <div class="search">
-            <input type="text" id="stockNameSelect" placeholder="기업명 검색">
-            <button id="searchButtonSelect">검색</button>
+            <div class="time-section">
+                <div class="label"></div>
+                <div class="value" id="time"></div>
+            </div>
         </div>
-        <br>
-        <button onclick="fetchStocksByDate('1week')">1주일</button>
-        <button onclick="fetchStocksByDate('1month')">1달</button>
-        <button onclick="fetchStocksByDate('3months')">3달</button>
-        <button onclick="fetchStocksByDate('6months')">6달</button>
-        <button onclick="fetchStocksByDate('1year')">1년</button>
-        <table>
-            <thead>
-                <tr>
-                    <th>기업명</th>
-                    <th>현재가</th>
-                    <th>전일</th>
-                    <th>고가</th>
-                    <th>저가</th>
-                    <th>거래량</th>
-                    <th>등락율</th>
-                    <th>예측</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw;">
-            <canvas id="stockChart"></canvas>
-        </div>
-    </main>
+        <form action="/login" method="post" class="login-form">
+            <input type="submit" value="로그인" class="login-button">
+        </form>
+    </header>
+    <main>
+      <h2>Stocks to Track</h2>
+      <div class="search">
+          <input type="text" placeholder="Search" />
+          <button class="button">검색</button>
+      </div>
 
-    <script src="./static/js/time.js"></script>
-    <script src="./static/js/search.js"></script>
-</body>
-</html>
+      <div class="line"></div>
+      <div class="table-container">
+    <table class="container">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <td>111</td>
+          <th>Name</th>
+          <td>111</td>
+          <th>Close</th>
+          <td>111</td>
+          <th>Open</th>
+          <td>111</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>High</th>
+          <td>111</td>
+          <th>Low</th>
+          <td>111</td>
+          <th>Volume</th>
+          <td>111</td>
+          <th>Change</th>
+          <td>111</td>
+        </tr>
+    
+      </tbody>
+    </table>
+    
+      <!-- <main> -->
+      <br><t> </t><br>
+          <button type="button" class="btn" onclick="window.open('https://finance.naver.com/item/main.nhn?code=005930#') ">1 week</button> 
+          <button type="button" class="btn" onclick="window.open('https://finance.naver.com/item/main.nhn?code=005930#') ">1 Month</button>   
+          <button type="button" class="btn" onclick="window.open('https://finance.naver.com/item/main.nhn?code=005930#') ">3 Month</button>  
+          <button type="button" class="btn" onclick="window.open('https://finance.naver.com/item/main.nhn?code=005930#') ">1 Year</button>    
+          <button type="button" class="btn" onclick="window.open('https://finance.naver.com/item/main.nhn?code=005930#') ">3 Years</button>  
+        <br><br><br>
+        <img src="https://ssl.pstatic.net/imgfinance/chart/item/area/day/005930.png?sidcode=1702814610749" >
+      </main>
+
+    <footer>
+        <!-- Footer Content -->
+    </footer>
+    <script src="./time.js"></script>
+
+    </body> 
+    </html>
+    

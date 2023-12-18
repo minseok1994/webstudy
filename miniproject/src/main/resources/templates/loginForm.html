@@ -1,46 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> 로그인 페이지</title>
-    <link rel="stylesheet" href="./static/loginForm.css">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/loginForm.css">
 </head>
 <body>
-    <div class="login-box">
-        <h2>LOGIN</h2>
-        <form action="/loginForm" method="post">
-            <div class="user-box">
-                <input type="text" name="username" required="">
-                <label>아이디</label>
+    <section class="forms-section">
+        <h1 class="section-title">로그인 페이지</h1>
+        <div class="forms">
+            <div class="form-wrapper is-active">
+                <button type="button" class="switcher switcher-login">
+                    로그인
+                    <span class="underline"></span>
+                </button>
+                <form class="form form-login" action="/login" method="post">
+                    <fieldset>
+                        <legend>Please, enter your username and password for login.</legend>
+                        <div class="input-block">
+                            <label for="login-username">Username</label>
+                            <input id="login-username" name="username" type="text" required>
+                        </div>
+                        <div class="input-block lock">
+                            <label for="login-password">Password</label>
+                            <input id="login-password" name="password" type="password" required>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
             </div>
-            <div class="user-box">
-                <input type="password" name="password" required="">
-                <label>비밀번호</label>
+            <div class="form-wrapper">
+                <button type="button" class="switcher switcher-signup">
+                    회원가입
+                    <span class="underline"></span>
+                </button>
+                <form class="form form-signup" action="/join" method="post">
+                    <fieldset>
+                        <legend>Please, enter your email, username, password, and password confirmation for sign up.</legend>
+                        <div class="input-block">
+                            <label for="signup-username">Username</label>
+                            <input id="signup-username" name="username" type="text" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="signup-email">Email</label>
+                            <input id="signup-email" name="email" type="email" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="signup-password">Password</label>
+                            <input id="signup-password" name="password" type="password" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="signup-confirm-password">Confirm password</label>
+                            <input id="signup-confirm-password" type="password" required>
+                        </div>
+                        <div id="password-match-message"></div>
+                    </fieldset>
+                    <button type="submit" id="signup-button" class="btn-signup">Continue</button>
+                </form>
             </div>
-            <button type="submit" class="login-button">로그인
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a id="authButton" href="joinForm" class="signup-button">회원가입
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </form>
-    </div>
-    
+        </div>
+    </section>
+    <script src="js/login.js"></script>
     <script>
         window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const loginError = urlParams.get('error');
-            if (loginError === 'true') {
-                alert('아이디 혹은 패스워드가 틀렸습니다.');
-            }
+            {{#errorMessage}}
+                alert("{{errorMessage}}");
+            {{/errorMessage}}
+            {{#successMessage}}
+                alert("{{successMessage}}");
+            {{/successMessage}}
         };
     </script>
-    <script src="./static/js/login.js"></script>
 </body>
 </html>

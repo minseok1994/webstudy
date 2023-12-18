@@ -32,6 +32,3 @@ spring:
     check-template-location: true
     suffix: .html
     cache: false
-
-  mvc:
-    static-path-pattern: /static/**

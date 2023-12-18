@@ -91,4 +91,11 @@ sendApi.onsubmit = (event) => {
     alert(url);
     mainApi(server, url, params);
 
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginSuccess = urlParams.get('loginSuccess');
+    if (loginSuccess) {
+        alert('로그인에 성공했습니다.');
+    }
+};
 };

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.miniproject.model.dto.UsersDto;
 import com.example.miniproject.service.UsersService;
@@ -57,19 +58,15 @@ public class SecurityController {
         return "loginForm";
     }
 
-    @GetMapping("/joinForm")
-    public String joinForm() {
-        log.info("[SecurityController][joinForm] start!!");
-        return "joinForm";
-    }
-
     @PostMapping("/join")
-    public String join(@Valid @ModelAttribute UsersDto usersDto, BindingResult result) {
+    public String join(@Valid @ModelAttribute UsersDto usersDto, BindingResult result,
+            RedirectAttributes redirectAttributes) {
         log.info("[SecurityController][join] start!!");
 
         if (result.hasErrors()) {
             log.info("[SecurityController][join] error");
-            return "joinForm";
+            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
+            return "redirect:/loginForm";
         }
 
         log.info(usersDto.toString());
@@ -82,6 +79,7 @@ public class SecurityController {
         log.info(usersDto.toString());
         usersService.saveUser(usersDto);
 
+        redirectAttributes.addFlashAttribute("successMessage", "회원가입에 성공했습니다.");
         return "redirect:/loginForm";
     }
 

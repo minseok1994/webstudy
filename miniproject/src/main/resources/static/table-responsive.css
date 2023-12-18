@@ -1,0 +1,109 @@
+/* Table Responsive */
+/* =================== */
+/* Author: https://github.com/pablorgarcia */
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #333; /* Changed text color to a dark gray */
+  background-color: #f4f4f4; /* Changed background color to a light gray */
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: #4dc3fa;
+}
+
+/* h2  {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fb667a;
+  text-decoration: none;
+} */
+
+.blue {
+  color: #185875;
+}
+
+.yellow {
+  color: #fff842;
+}
+
+.container th h1 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  color: #185875;
+}
+
+.container td {
+  font-weight: normal;
+  font-size: 1em;
+  box-shadow: 0 2px 2px -2px #0e1119;
+  text-align: left;
+}
+
+.container {
+  text-align: center;
+  overflow: hidden;
+  width: 70%;
+  margin: 0 auto;
+  display: table;
+  padding: 2em 0; /* Adjusted top padding for better spacing */
+}
+
+.container td,
+.container th {
+  padding: 2% 2% 2% 2%;
+  text-align: center;
+}
+
+.container tr:nth-child(odd) {
+  background-color: #e0e0e0; /* Changed odd row background color to a lighter gray */
+}
+
+.container tr:nth-child(even) {
+  background-color: #f4f4f4; /* Changed even row background color to a light gray */
+}
+
+.container th {
+  background-color: #9bbace; /* Changed header background color to a dark gray */
+  color: #000;
+  font-weight: normal;/* Changed header text color to white */
+}
+
+.container td:first-child {
+  color: #fb667a;
+}
+
+.container tr:hover {
+  background-color: #ddd; /* Changed hover background color to a softer gray */
+  box-shadow: 0 6px 6px -6px #0e1119;
+}
+
+.container td:hover {
+  background-color: #5c6bc0;
+  color: #403e10;
+  font-weight: bold;
+  box-shadow: #283593 -1px 1px, #283593 -2px 2px, #283593 -3px 3px,
+  #283593 -4px 4px, #283593 -5px 5px, #283593 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+  .container td:nth-child(8),
+  .container th:nth-child(8) {
+    display: none;
+  }
+}

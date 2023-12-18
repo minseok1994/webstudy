@@ -1,23 +1,24 @@
-function updateCurrentTime() {
-    var currentTimeElement = document.getElementById('current-time');
-    var currentTime = new Date();
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
 
-    // 시, 분, 초가 한 자리 숫자일 경우 앞에 0을 추가
-    hours = (hours < 10) ? '0' + hours : hours;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
-    seconds = (seconds < 10) ? '0' + seconds : seconds;
+function updateDateTime() {
+  const currentDateTime = new Date();
 
-    var timeString = hours + ':' + minutes + ':' + seconds;
+  // 날짜 정보 추출
+  const year = currentDateTime.getFullYear();
+  const month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
+  const day = currentDateTime.getDate().toString().padStart(2, '0');
 
-    currentTimeElement.innerHTML = timeString;
-  }
+  // 시간 정보 추출
+  const hours = currentDateTime.getHours().toString().padStart(2, '0');
+  const minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
+  const seconds = currentDateTime.getSeconds().toString().padStart(2, '0');
 
-  // 초기에 한 번 호출
-  updateCurrentTime();
+  // HTML에 날짜와 시간 정보 추가
+  document.getElementById('date').innerText = `${year}-${month}-${day}`;
+  document.getElementById('time').innerText = `${hours}:${minutes}:${seconds}`;
+}
 
-  // 1초마다 업데이트
-  setInterval(updateCurrentTime, 1000);
+// 페이지 로드 시 최초 업데이트
+updateDateTime();
 
+// 1초마다 업데이트
+setInterval(updateDateTime, 1000);

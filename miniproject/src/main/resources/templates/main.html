@@ -2,22 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PrediStocks</title>
+    <title>메인 페이지</title>
     <link rel="stylesheet" href="./static/main.css">
 </head>
-<body>
-    <header>
-        <h1>PrediStocks</h1>
-    <div id="current-time"> </div> 
-    <form action="/login" method="post" class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer">
-        <input type="submit" value="로그인" class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer"/></form>
-    </header>
+<body class="main-page">
     <main>
-            <h2>Stocks to Track</h2>
-                <div class="search"> 
-                    <input type="text" placeholder="기업명 검색">
-                    <button> 검색 </button>
+        <header>
+            <h1>PrediStocks</h1>
+            <div class="datetime-container">
+                <div class="date-section">
+                    <div class="label">날짜 </div>
+                    <div class="value" id="date"></div>
                 </div>
+
+                <div class="time-section">
+                    <div class="label">현재 시간 </div>
+                    <div class="value" id="time"></div>
+                </div>
+            </div>
+            <a href="/loginForm" class="login" id="authButton">로그인</a>        
+        </header>
+        <br><br><br>
+        <h2>Stocks to Track</h2>
+        <div class="search"> 
+            <input type="text" id="stockNameSelect" placeholder="기업명 검색">
+            <button id="searchButtonSelect">검색</button>
+        </div>
         <table>
             <thead>
                 <tr>  
@@ -28,21 +38,28 @@
                     <th>저가</th>
                     <th>거래량</th>
                     <th>등락율</th>
+                    <th>예측</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="stockTableBody">
                 <tr>
-                    <td>name</td>
-                    <td>close</td>
-                    <td>open</td>
-                    <td>high</td>
-                    <td>low</td>
-                    <td>volume</td>
-                    <td>change</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="/select" class="btn">예측</a>
                 </tr>
             </tbody>
         </table>
+        <button id="loadMore">더 보기</button>
+        <div id="loadingIndicator" class="loading-container" style="display: none;">
+            <div class="spinner"></div>
+        </div>
     </main>
     <script src="./static/js/time.js"></script>
+    <script src="./static/js/search.js"></script>
 </body>
 </html>

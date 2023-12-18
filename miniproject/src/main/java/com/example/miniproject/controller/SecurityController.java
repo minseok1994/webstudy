@@ -28,9 +28,15 @@ public class SecurityController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/")
-    public String index() {
+    public String main() {
         log.info("[SecurityController][main] start");
         return "main";
+    }
+
+    @GetMapping("/select")
+    public String select() {
+        log.info("[SecurityController][select] start");
+        return "select";
     }
 
     @GetMapping("/user")

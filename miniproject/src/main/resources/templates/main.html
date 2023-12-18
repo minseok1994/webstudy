@@ -8,31 +8,18 @@
 <body>
     <header>
         <h1>PrediStocks</h1>
-
-  
     <div id="current-time"> </div> 
-    <script src="./static/js/time.js"></script>
-    <!-- <button type="login" class="login">로그인</button>    -->
     <form action="/login" method="post" class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer">
-      <input type="submit" value="로그인" class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer"/></form>
-
-        <!-- <script src="./static/js/login.js"></script> -->
-        <!-- <a id="authButton" href="loginForm" class="login">로그인</a></form> -->
-        <!-- <button type="login" class="login">로그인</button> -->
-        
-
-      
-      
+        <input type="submit" value="로그인" class="px-4 py-2 bg-green-500 text-white rounded w-full cursor-pointer"/></form>
     </header>
     <main>
             <h2>Stocks to Track</h2>
-              <div class="search"> 
-                  <input type="text" placeholder="Search">
-                  <button> 검색 </button>
-              </div>
+                <div class="search"> 
+                    <input type="text" placeholder="기업명 검색">
+                    <button> 검색 </button>
+                </div>
         <table>
             <thead>
-            
                 <tr>  
                     <th>기업명</th>
                     <th>현재가</th>
@@ -42,8 +29,8 @@
                     <th>거래량</th>
                     <th>등락율</th>
                 </tr>
-              
-              
+            </thead>
+            <tbody>
                 <tr>
                     <td>name</td>
                     <td>close</td>
@@ -53,33 +40,9 @@
                     <td>volume</td>
                     <td>change</td>
                 </tr>
-            </thead>
-            <tbody>
-                <!-- Add more rows with actual data here -->
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-              
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-              
             </tbody>
         </table>
     </main>
+    <script src="./static/js/time.js"></script>
 </body>
 </html>

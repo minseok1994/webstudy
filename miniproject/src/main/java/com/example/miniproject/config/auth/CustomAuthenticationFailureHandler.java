@@ -15,7 +15,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException {
-
+        // 로그인 실패 시 메세지 작성
         log.error("Login failed for user: " + request.getParameter("username"));
         log.error("Error Message: " + exception.getMessage());
 

@@ -1,3 +1,34 @@
+// 전체 데이터 출력 로직
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.body.classList.contains('main-page')) {
+        fetch(`http://localhost:8000/api/stocks`)
+            .then(response => response.json())
+            .then(data => updateTableWithAllStocks(data))
+            .catch(error => console.error('Error:', error));
+    }
+});
+
+// 전체 데이터 테이블 업데이트 함수
+function updateTableWithAllStocks(data) {
+    var tableBody = document.querySelector('table tbody');
+    tableBody.innerHTML = '';
+    data.forEach((stock, index) => {
+        var row = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${stock.Name}</td>
+                <td>${stock.Close}</td>
+                <td>${stock.Open}</td>
+                <td>${stock.High}</td>
+                <td>${stock.Low}</td>
+                <td>${stock.Volume}</td>
+                <td>${stock.Changes}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
 // 검색 로직
 let selectedStockName = ""; // 선택된 주식명 저장
 
@@ -33,36 +64,6 @@ function updateTable(data) {
     tableBody.innerHTML = row;
 }
 
-// 전체 데이터 출력 로직
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.body.classList.contains('main-page')) {
-        fetch(`http://localhost:8000/api/stocks`)
-            .then(response => response.json())
-            .then(data => updateTableWithAllStocks(data))
-            .catch(error => console.error('Error:', error));
-    }
-});
-
-// 전체 데이터 테이블 업데이트 함수
-function updateTableWithAllStocks(data) {
-    var tableBody = document.querySelector('table tbody');
-    tableBody.innerHTML = '';
-    data.forEach(stock => {
-        var row = `
-            <tr>
-                <td>${stock.Name}</td>
-                <td>${stock.Close}</td>
-                <td>${stock.Open}</td>
-                <td>${stock.High}</td>
-                <td>${stock.Low}</td>
-                <td>${stock.Volume}</td>
-                <td>${stock.Changes}</td>
-            </tr>
-        `;
-        tableBody.innerHTML += row;
-    });
-}
-
 // 더보기 로직
 if (document.getElementById('loadMore')) {
     let currentPage = 0;
@@ -85,9 +86,11 @@ if (document.getElementById('loadMore')) {
 function updateTableWithStocks(data, clearTable = true) {
     const tableBody = document.querySelector('table tbody');
     if (clearTable) tableBody.innerHTML = ''; // 테이블 초기화
-    data.forEach(stock => {
+    data.forEach((stock, index) => {
+        const absoluteIndex = currentPage * itemsPerPage + index + 1;
         const row = `
             <tr>
+                <td>${absoluteIndex}</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
@@ -100,6 +103,39 @@ function updateTableWithStocks(data, clearTable = true) {
         tableBody.innerHTML += row;
     });
 }
+
+// 페이지 버튼 생성 함수
+let currentPage = 0;
+const itemsPerPage = 20;
+
+function createPagination(totalPages) {
+    const paginationContainer = document.getElementById('pagination');
+    paginationContainer.innerHTML = ''; // 기존 내용 초기화
+
+    for (let i = 0; i < totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i + 1; // 페이지 번호
+        pageButton.addEventListener('click', function() {
+            currentPage = i; // 현재 페이지 번호 업데이트
+            fetchPageData(i);
+        });
+        paginationContainer.appendChild(pageButton);
+    }
+}
+
+// 페이지 데이터 가져오기 함수
+function fetchPageData(pageNumber) {
+    fetch(`http://localhost:8000/api/stocks?page=${pageNumber}`)
+        .then(response => response.json())
+        .then(data => updateTableWithStocks(data))
+        .catch(error => console.error('Error:', error));
+}
+
+// 페이지네이션 초기화
+createPagination(20); // 총 페이지 수를 인자로 전달
+
+
+
 // 날짜별 데이터 가져오기 함수 (select.html용)
 function fetchStocksByDate(period) {
     if (!selectedStockName) {

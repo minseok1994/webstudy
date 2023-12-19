@@ -40,22 +40,22 @@ public class SecurityController {
         return "charts";
     }
 
-    @GetMapping("/user")
-    public @ResponseBody String user() {
-        log.info("[SecurityController][user] start");
-        return "user";
-    }
-
     @GetMapping("/profile")
-    public String profile() {
+    public String profileShow() {
         log.info("[SecurityController][profile] start");
         return "profile";
     }
 
     @GetMapping("/table")
-    public String table() {
+    public String tableShow() {
         log.info("[SecurityController][table] start");
-        return "table";
+        return "tables";
+    }
+
+    @GetMapping("/user")
+    public @ResponseBody String user() {
+        log.info("[SecurityController][user] start");
+        return "user";
     }
 
     @GetMapping("/admin")

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>Tables | Klorofil - Free Bootstrap Dashboard Template</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -39,9 +39,9 @@
       sizes="96x96"
       href="assets/img/favicon.png"
     />
-  </head>
+</head>
 
-  <body>
+<body class="main-page">
     <!-- WRAPPER -->
     <div id="wrapper">
         <!-- NAVBAR -->
@@ -190,14 +190,19 @@
                                 <span>Dashboard</span></a>
                         </li>
                         <li>
+                            <a href="table" class="active">
+                                <i class="lnr lnr-dice"></i>
+                                <span>Stock Table</span></a>
+                        </li>
+                        <li>
                             <a href="charts" class="">
                                 <i class="lnr lnr-chart-bars"></i>
-                                <span>Charts</span></a>
+                                <span>Predict Chart</span></a>
                         </li>
                         <li>
                             <a href="#subPages" data-toggle="collapse" class="collapsed">
                                 <i class="lnr lnr-file-empty"></i> <span>Pages</span>
-                                <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                <i class="icon-submenu lnr lnr-chevron-right"></i></a>
                                 <div id="subPages" class="collapse">
                                     <ul class="nav">
                                         <li><a href="profile" class="">Profile</a></li>
@@ -205,11 +210,6 @@
                                         <li><a href="joinForm" class="">Sign up</a></li>
                                     </ul>
                                 </div>
-                        </li>
-                        <li>
-                            <a href="table" class="active">
-                                <i class="lnr lnr-dice"></i>
-                                <span>Stocks Table</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -221,261 +221,51 @@
         <!-- MAIN CONTENT -->
         <div class="main-content">
             <div class="container-fluid">
-                <h3 class="page-title">Tables</h3>
+                <h3 class="page-title">Stock Table</h3>
                 <div class="row">
-                <div class="col-md-6">
-                    <!-- BASIC TABLE -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Basic Table</h3>
+                    <div class="col-md-6">
+                        <!-- BASIC TABLE -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Current Price</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>기업명</th>
+                                            <th>현재가</th>
+                                            <th>전일</th>
+                                            <th>고가</th>
+                                            <th>저가</th>
+                                            <th>거래량</th>
+                                            <th>등락률</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="stockTableBody">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div id="pagination">
+                                    <!-- 페이지 버튼이 동적으로 생성될 위치 -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END BASIC TABLE -->
                     </div>
-                    <div class="panel-body">
-                        <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END BASIC TABLE -->
-                </div>
-                <div class="col-md-6">
-                    <!-- TABLE NO PADDING -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Table Inside No Padding</h3>
-                    </div>
-                    <div class="panel-body no-padding">
-                        <table class="table">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END TABLE NO PADDING -->
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                    <!-- TABLE STRIPED -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Striped Row</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END TABLE STRIPED -->
-                </div>
-                <div class="col-md-6">
-                    <!-- TABLE HOVER -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Hover Row</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END TABLE HOVER -->
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-                    <!-- BORDERED TABLE -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Bordered Table</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END BORDERED TABLE -->
-                </div>
-                <div class="col-md-6">
-                    <!-- CONDENSED TABLE -->
-                    <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Condensed Table</h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                            </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                            </tr>
-                            <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    <!-- END CONDENSED TABLE -->
-                </div>
                 </div>
             </div>
-            </div>
+        </div>
             <!-- END MAIN CONTENT -->
         </div>
         <!-- END MAIN -->
@@ -484,16 +274,17 @@
             <div class="container-fluid">
             <p class="copyright">
                 Shared by <i class="fa fa-love"></i
-                ><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+                ><a >PlayData</a>
             </p>
             </div>
         </footer>
     </div>
     <!-- END WRAPPER -->
     <!-- Javascript -->
+    <script src="assets/scripts/search.js"></script>
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/scripts/klorofil-common.js"></script>
-  </body>
+</body>
 </html>

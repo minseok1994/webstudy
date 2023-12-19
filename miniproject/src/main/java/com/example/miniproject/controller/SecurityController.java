@@ -31,19 +31,31 @@ public class SecurityController {
     @GetMapping("/")
     public String main() {
         log.info("[SecurityController][main] start");
-        return "main";
+        return "index";
     }
 
-    @GetMapping("/select")
+    @GetMapping("/charts")
     public String select() {
-        log.info("[SecurityController][select] start");
-        return "select";
+        log.info("[SecurityController][charts] start");
+        return "charts";
     }
 
     @GetMapping("/user")
     public @ResponseBody String user() {
         log.info("[SecurityController][user] start");
         return "user";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        log.info("[SecurityController][profile] start");
+        return "profile";
+    }
+
+    @GetMapping("/table")
+    public String table() {
+        log.info("[SecurityController][table] start");
+        return "table";
     }
 
     @GetMapping("/admin")

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.miniproject.model.dto.UsersDto;
 import com.example.miniproject.service.UsersService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
@@ -70,15 +72,22 @@ public class SecurityController {
         return "loginForm";
     }
 
+    @GetMapping("/joinForm")
+    public String joinForm() {
+        log.info("[SecurityController][joinForm] start");
+        return "joinForm";
+    }
+
     @PostMapping("/join")
     public String join(@Valid @ModelAttribute UsersDto usersDto, BindingResult result,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes, HttpServletRequest request) {
         log.info("[SecurityController][join] start!!");
 
         if (result.hasErrors()) {
             log.info("[SecurityController][join] error");
-            redirectAttributes.addFlashAttribute("errors", result.getAllErrors());
-            return "redirect:/loginForm";
+            HttpSession session = request.getSession();
+            session.setAttribute("errorMessage", "회원가입에 실패했습니다."); // 에러 메시지 설정
+            return "redirect:/joinForm";
         }
 
         log.info(usersDto.toString());

@@ -1,6 +1,8 @@
 // 전체 데이터 출력 로직
 document.addEventListener('DOMContentLoaded', function() {
     if (document.body.classList.contains('main-page')) {
+        initializePagination();
+        
         fetch(`http://localhost:8000/api/stocks`)
             .then(response => response.json())
             .then(data => updateTableWithAllStocks(data))
@@ -63,31 +65,97 @@ function updateTable(data) {
     `;
     tableBody.innerHTML = row;
 }
+// 전역 변수로 현재 페이지 번호 및 페이지 범위 관리
+let currentPage = 0;
+const itemsPerPage = 20;
+let totalNumberOfPages;
+let currentPageRange = 1; 
+const rangeSize = 10
 
-// 더보기 로직
-if (document.getElementById('loadMore')) {
-    let currentPage = 0;
-    document.getElementById('loadMore').addEventListener('click', function() {
-        currentPage++;
-        fetch(`http://localhost:8000/api/stocks?page=${currentPage}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    updateTableWithStocks(data, false);
-                } else {
-                    alert('더 이상 데이터가 없습니다.');
-                    this.style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
+// 총 페이지 수 계산 및 페이지네이션 초기화 함수
+function initializePagination() {
+    totalNumberOfPages = 48;
+    createPagination();
 }
 
+// 페이지 버튼 생성 함수
+function createPagination() {
+    const paginationContainer = document.getElementById('pagination');
+    const startPage = (currentPageRange - 1) * rangeSize;
+    const endPage = Math.min(startPage + rangeSize, totalNumberOfPages);
+
+    paginationContainer.innerHTML = ''; // 기존 내용 초기화
+
+    // 이전 페이지 범위 버튼
+    if (currentPageRange > 1) {
+        const prevRangeButton = document.createElement('button');
+        prevRangeButton.innerText = '이전 범위';
+        prevRangeButton.addEventListener('click', function() {
+            currentPageRange--;
+            createPagination();
+            fetchPageData(startPage - rangeSize);
+        });
+        paginationContainer.appendChild(prevRangeButton);
+    }
+
+    // 개별 페이지 버튼
+    for (let i = startPage; i < endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.innerText = i + 1;
+        pageButton.classList.add('page-button');
+        pageButton.addEventListener('click', function() {
+            currentPage = i;
+            fetchPageData(i);
+        });
+        paginationContainer.appendChild(pageButton);
+    }
+
+    // 다음 페이지 범위 버튼
+    if (endPage < totalNumberOfPages) {
+        const nextRangeButton = document.createElement('button');
+        nextRangeButton.innerText = '다음 범위';
+        nextRangeButton.addEventListener('click', function() {
+            currentPageRange++;
+            createPagination();
+            fetchPageData(endPage);
+        });
+        paginationContainer.appendChild(nextRangeButton);
+    }
+
+    // 첫 페이지 데이터 로드
+    fetchPageData(startPage);
+}
+
+// 페이지 데이터 가져오기 함수
+function fetchPageData(pageNumber) {
+    fetch(`http://localhost:8000/api/stocks?page=${pageNumber}&limit=${itemsPerPage}`)
+        .then(response => response.json())
+        .then(data => updateTableWithStocks(data))
+        .catch(error => console.error('Error:', error));
+}
+
+// 페이지 데이터 가져오기 함수
+function fetchPageData(pageNumber) {
+    fetch(`http://localhost:8000/api/stocks?page=${pageNumber}&limit=${itemsPerPage}`)
+        .then(response => response.json())
+        .then(data => updateTableWithStocks(data))
+        .catch(error => console.error('Error:', error));
+}
+
+// 페이지 로드 시 페이지네이션 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.body.classList.contains('main-page')) {
+        initializePagination();
+    }
+});
+
+
+// updateTableWithStocks
 function updateTableWithStocks(data, clearTable = true) {
     const tableBody = document.querySelector('table tbody');
     if (clearTable) tableBody.innerHTML = ''; // 테이블 초기화
     data.forEach((stock, index) => {
-        const absoluteIndex = currentPage * itemsPerPage + index + 1;
+        const absoluteIndex = currentPage * itemsPerPage + index + 1
         const row = `
             <tr>
                 <td>${absoluteIndex}</td>
@@ -104,36 +172,9 @@ function updateTableWithStocks(data, clearTable = true) {
     });
 }
 
-// 페이지 버튼 생성 함수
-let currentPage = 0;
-const itemsPerPage = 20;
-
-function createPagination(totalPages) {
-    const paginationContainer = document.getElementById('pagination');
-    paginationContainer.innerHTML = ''; // 기존 내용 초기화
-
-    for (let i = 0; i < totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.innerText = i + 1; // 페이지 번호
-        pageButton.addEventListener('click', function() {
-            currentPage = i; // 현재 페이지 번호 업데이트
-            fetchPageData(i);
-        });
-        paginationContainer.appendChild(pageButton);
-    }
-}
-
-// 페이지 데이터 가져오기 함수
-function fetchPageData(pageNumber) {
-    fetch(`http://localhost:8000/api/stocks?page=${pageNumber}`)
-        .then(response => response.json())
-        .then(data => updateTableWithStocks(data))
-        .catch(error => console.error('Error:', error));
-}
-
-// 페이지네이션 초기화
-createPagination(20); // 총 페이지 수를 인자로 전달
-
+    // 페이지네이션 초기화 및 초기 데이터 로드
+    createPagination();
+    fetchPageData(0);
 
 
 // 날짜별 데이터 가져오기 함수 (select.html용)
@@ -187,7 +228,7 @@ function drawChart(data) {
 
     const labels = data.map(item => item['Date']); // 날짜 데이터
     const dataPoints = data.map(item => item['Close']); // 종가 데이터
-    
+
     const backgroundColors = dataPoints.map((_, index) => {
         if (index >= dataPoints.length - 10) {
             return 'rgba(255, 0, 0, 0.5)'; // 빨간색
@@ -198,4 +239,3 @@ function drawChart(data) {
     // 새 차트 생성
     chartInstance = createChart(ctx, labels, dataPoints, backgroundColors);
 }
-

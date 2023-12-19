@@ -18,10 +18,6 @@
         href="assets/vendor/font-awesome/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="assets/vendor/linearicons/style.css" />
-    <link
-        rel="stylesheet"
-        href="assets/vendor/chartist/css/chartist-custom.css"
-    />
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -50,133 +46,60 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-            <a href="index.html"
-                ><img
-                src="assets/img/logo-dark.png"
-                alt="Klorofil Logo"
-                class="img-responsive logo"
-            /></a>
+                <a href="index">
+                <h1>PrediStocks</h1>
+                </a>
             </div>
             <div class="container-fluid">
             <div class="navbar-btn">
-                <button type="button" class="btn-toggle-fullwidth">
-                <i class="lnr lnr-arrow-left-circle"></i>
-                </button>
             </div>
-            <form class="navbar-form navbar-left">
-                <div class="input-group">
-                <input
-                    type="text"
-                    value=""
-                    class="form-control"
-                    placeholder="Search dashboard..."
-                />
-                <span class="input-group-btn"
-                    ><button type="button" class="btn btn-primary">Go</button></span
-                >
-                </div>
-            </form>
-            <div class="navbar-btn navbar-btn-right">
-                <a
-                class="btn btn-success update-pro"
-                href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro"
-                title="Upgrade to Pro"
-                target="_blank"
-                ><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a
-                >
-            </div>
+                
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a
-                    href="#"
-                    class="dropdown-toggle icon-menu"
-                    data-toggle="dropdown"
-                    >
-                    <i class="lnr lnr-alarm"></i>
-                    <span class="badge bg-danger">5</span>
-                    </a>
-                    <ul class="dropdown-menu notifications">
-                    <li>
-                        <a href="#" class="notification-item"
-                        ><span class="dot bg-warning"></span>System space is
-                        almost full</a
-                        >
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        ><i class="lnr lnr-question-circle"></i> <span>Help</span>
+                        <i class="icon-submenu lnr lnr-chevron-down"></i
+                        ></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="#">Basic Use</a></li>
+                        <li><a href="#">Working With Data</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Troubleshooting</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="#" class="notification-item"
-                        ><span class="dot bg-danger"></span>You have 9 unfinished
-                        tasks</a
-                        >
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        ><img
+                            src=""
+                            class="img-circle"
+                            alt="Avatar" />
+                        <span>Samuel</span>
+                        <i class="icon-submenu lnr lnr-chevron-down"></i
+                        ></a>
+                        <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"
+                            ><i class="lnr lnr-user"></i> <span>My Profile</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                            ><i class="lnr lnr-envelope"></i> <span>Message</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                            ><i class="lnr lnr-cog"></i> <span>Settings</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#"
+                            ><i class="lnr lnr-exit"></i> <span>Logout</span></a
+                            >
+                        </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="#" class="notification-item"
-                        ><span class="dot bg-success"></span>Monthly report is
-                        available</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="notification-item"
-                        ><span class="dot bg-warning"></span>Weekly meeting in 1
-                        hour</a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="notification-item"
-                        ><span class="dot bg-success"></span>Your request has been
-                        approved</a
-                        >
-                    </li>
-                    <li><a href="#" class="more">See all notifications</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                    ><i class="lnr lnr-question-circle"></i> <span>Help</span>
-                    <i class="icon-submenu lnr lnr-chevron-down"></i
-                    ></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="#">Basic Use</a></li>
-                    <li><a href="#">Working With Data</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Troubleshooting</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                    ><img
-                        src="assets/img/user.png"
-                        class="img-circle"
-                        alt="Avatar" />
-                    <span>Samuel</span>
-                    <i class="icon-submenu lnr lnr-chevron-down"></i
-                    ></a>
-                    <ul class="dropdown-menu">
-                    <li>
-                        <a href="#"
-                        ><i class="lnr lnr-user"></i> <span>My Profile</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#"
-                        ><i class="lnr lnr-envelope"></i> <span>Message</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#"
-                        ><i class="lnr lnr-cog"></i> <span>Settings</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#"
-                        ><i class="lnr lnr-exit"></i> <span>Logout</span></a
-                        >
-                    </li>
-                    </ul>
-                </li>
-                <!-- <li>
-                                <a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-                            </li> -->
                 </ul>
             </div>
             </div>
@@ -232,100 +155,6 @@
                 { x: "2023-08-02", y: 71300.0 },
                 { x: "2023-08-03", y: 71100.0 },
                 { x: "2023-08-04", y: 71100.0 },
-                { x: "2023-08-07", y: 70500.0 },
-                { x: "2023-08-08", y: 70400.0 },
-                { x: "2023-08-09", y: 70200.0 },
-                { x: "2023-08-10", y: 69900.0 },
-                { x: "2023-08-11", y: 69700.0 },
-                { x: "2023-08-14", y: 69100.0 },
-                { x: "2023-08-16", y: 68700.0 },
-                { x: "2023-08-17", y: 68500.0 },
-                { x: "2023-08-18", y: 68400.0 },
-                { x: "2023-08-21", y: 67900.0 },
-                { x: "2023-08-22", y: 67900.0 },
-                { x: "2023-08-23", y: 67800.0 },
-                { x: "2023-08-24", y: 67700.0 },
-                { x: "2023-08-25", y: 67700.0 },
-                { x: "2023-08-28", y: 67700.0 },
-                { x: "2023-08-29", y: 67900.0 },
-                { x: "2023-08-30", y: 67900.0 },
-                { x: "2023-08-31", y: 67900.0 },
-                { x: "2023-09-01", y: 68100.0 },
-                { x: "2023-09-04", y: 68400.0 },
-                { x: "2023-09-05", y: 68600.0 },
-                { x: "2023-09-06", y: 68700.0 },
-                { x: "2023-09-07", y: 68800.0 },
-                { x: "2023-09-08", y: 69000.0 },
-                { x: "2023-09-11", y: 69300.0 },
-                { x: "2023-09-12", y: 69400.0 },
-                { x: "2023-09-13", y: 69400.0 },
-                { x: "2023-09-14", y: 69400.0 },
-                { x: "2023-09-15", y: 69500.0 },
-                { x: "2023-09-18", y: 69400.0 },
-                { x: "2023-09-19", y: 69400.0 },
-                { x: "2023-09-20", y: 69300.0 },
-                { x: "2023-09-21", y: 69200.0 },
-                { x: "2023-09-22", y: 69100.0 },
-                { x: "2023-09-25", y: 68700.0 },
-                { x: "2023-09-26", y: 68700.0 },
-                { x: "2023-09-27", y: 68500.0 },
-                { x: "2023-10-04", y: 67600.0 },
-                { x: "2023-10-05", y: 67500.0 },
-                { x: "2023-10-06", y: 67400.0 },
-                { x: "2023-10-10", y: 67400.0 },
-                { x: "2023-10-11", y: 67300.0 },
-                { x: "2023-10-12", y: 67300.0 },
-                { x: "2023-10-13", y: 67400.0 },
-                { x: "2023-10-16", y: 67600.0 },
-                { x: "2023-10-17", y: 67800.0 },
-                { x: "2023-10-18", y: 67800.0 },
-                { x: "2023-10-19", y: 67800.0 },
-                { x: "2023-10-20", y: 68000.0 },
-                { x: "2023-10-23", y: 68300.0 },
-                { x: "2023-10-24", y: 68500.0 },
-                { x: "2023-10-25", y: 68500.0 },
-                { x: "2023-10-26", y: 68500.0 },
-                { x: "2023-10-27", y: 68700.0 },
-                { x: "2023-10-30", y: 69000.0 },
-                { x: "2023-10-31", y: 69200.0 },
-                { x: "2023-11-01", y: 69200.0 },
-                { x: "2023-11-02", y: 69300.0 },
-                { x: "2023-11-03", y: 69400.0 },
-                { x: "2023-11-06", y: 69800.0 },
-                { x: "2023-11-07", y: 70000.0 },
-                { x: "2023-11-08", y: 70100.0 },
-                { x: "2023-11-09", y: 70100.0 },
-                { x: "2023-11-10", y: 70400.0 },
-                { x: "2023-11-13", y: 70800.0 },
-                { x: "2023-11-14", y: 71100.0 },
-                { x: "2023-11-15", y: 71200.0 },
-                { x: "2023-11-16", y: 71300.0 },
-                { x: "2023-11-17", y: 71600.0 },
-                { x: "2023-11-20", y: 72100.0 },
-                { x: "2023-11-21", y: 72400.0 },
-                { x: "2023-11-22", y: 72500.0 },
-                { x: "2023-11-23", y: 72600.0 },
-                { x: "2023-11-24", y: 72800.0 },
-                { x: "2023-11-27", y: 73200.0 },
-                { x: "2023-11-28", y: 73300.0 },
-                { x: "2023-11-29", y: 73300.0 },
-                { x: "2023-11-30", y: 73300.0 },
-                { x: "2023-12-01", y: 73400.0 },
-                { x: "2023-12-04", y: 73300.0 },
-                { x: "2023-12-05", y: 73300.0 },
-                { x: "2023-12-06", y: 73200.0 },
-                { x: "2023-12-07", y: 73000.0 },
-                { x: "2023-12-08", y: 73000.0 },
-                { x: "2023-12-11", y: 72600.0 },
-                { x: "2023-12-12", y: 72500.0 },
-                { x: "2023-12-13", y: 72300.0 },
-                { x: "2023-12-14", y: 72100.0 },
-                { x: "2023-12-15", y: 72000.0 },
-                { x: "2023-12-18", y: 71600.0 },
-                { x: "2023-12-19", y: 71500.0 },
-                { x: "2023-12-20", y: 71400.0 },
-                { x: "2023-12-21", y: 71200.0 },
-                { x: "2023-12-22", y: 71300.0 },
             ];
             const ctx = document.getElementById("myChart").getContext("2d");
             const myChart = new Chart(ctx, {
@@ -398,127 +227,5 @@
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/klorofil-common.js"></script>
-    <script>
-      $(function () {
-        var options;
-
-        var data = {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          series: [
-            [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-          ],
-        };
-
-        // line chart
-        options = {
-          height: "300px",
-          showPoint: true,
-          axisX: {
-            showGrid: false,
-          },
-          lineSmooth: false,
-        };
-
-        new Chartist.Line("#demo-line-chart", data, options);
-
-        // bar chart
-        options = {
-          height: "300px",
-          axisX: {
-            showGrid: false,
-          },
-        };
-
-        new Chartist.Bar("#demo-bar-chart", data, options);
-
-        // area chart
-        options = {
-          height: "270px",
-          showArea: true,
-          showLine: false,
-          showPoint: false,
-          axisX: {
-            showGrid: false,
-          },
-          lineSmooth: false,
-        };
-
-        new Chartist.Line("#demo-area-chart", data, options);
-
-        // multiple chart
-        var data = {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          series: [
-            {
-              name: "series-real",
-              data: [
-                200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900,
-              ],
-            },
-            {
-              name: "series-projection",
-              data: [
-                240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800,
-              ],
-            },
-          ],
-        };
-
-        var options = {
-          fullWidth: true,
-          lineSmooth: false,
-          height: "270px",
-          low: 0,
-          high: "auto",
-          series: {
-            "series-projection": {
-              showArea: true,
-              showPoint: false,
-              showLine: false,
-            },
-          },
-          axisX: {
-            showGrid: false,
-          },
-          axisY: {
-            showGrid: false,
-            onlyInteger: true,
-            offset: 0,
-          },
-          chartPadding: {
-            left: 20,
-            right: 20,
-          },
-        };
-
-        new Chartist.Line("#multiple-chart", data, options);
-      });
-    </script>
   </body>
 </html>

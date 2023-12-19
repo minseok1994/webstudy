@@ -1,186 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Profile | Klorofil - Free Bootstrap Dashboard Template</title>
+<head>
+    <title>PrediStock</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
     <!-- VENDOR CSS -->
     <link
-      rel="stylesheet"
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+    href="assets/vendor/bootstrap/css/bootstrap.min.css"
     />
     <link
-      rel="stylesheet"
-      href="assets/vendor/font-awesome/css/font-awesome.min.css"
+    rel="stylesheet"
+    href="assets/vendor/font-awesome/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="assets/vendor/linearicons/style.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
+    <link
+    rel="stylesheet"
+    href="assets/vendor/chartist/css/chartist-custom.css"
+    />
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
     <!-- GOOGLE FONTS -->
     <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+    rel="stylesheet"
     />
     <!-- ICONS -->
     <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="assets/img/apple-icon.png"
+    rel="apple-touch-icon"
+    sizes="76x76"
+    href="assets/img/apple-icon.png"
     />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="assets/img/favicon.png"
+    rel="icon"
+    type="image/png"
+    sizes="96x96"
+    href="assets/img/favicon.png"
     />
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- WRAPPER -->
     <div id="wrapper">
-      <!-- NAVBAR -->
-      <nav class="navbar navbar-default navbar-fixed-top">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-          <a href="index.html"
+        <a href="index.html"
             ><img
-              src="assets/img/logo-dark.png"
-              alt="Klorofil Logo"
-              class="img-responsive logo"
-          /></a>
+            src="assets/img/logo-dark.png"
+            alt="Klorofil Logo"
+            class="img-responsive logo"
+        /></a>
         </div>
         <div class="container-fluid">
-          <div class="navbar-btn">
+        <div class="navbar-btn">
             <button type="button" class="btn-toggle-fullwidth">
-              <i class="lnr lnr-arrow-left-circle"></i>
+            <i class="lnr lnr-arrow-left-circle"></i>
             </button>
-          </div>
-          <form class="navbar-form navbar-left">
-            <div class="input-group">
-              <input
-                type="text"
-                value=""
-                class="form-control"
-                placeholder="Search dashboard..."
-              />
-              <span class="input-group-btn"
-                ><button type="button" class="btn btn-primary">Go</button></span
-              >
-            </div>
-          </form>
-          <div class="navbar-btn navbar-btn-right">
-            <a
-              class="btn btn-success update-pro"
-              href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro"
-              title="Upgrade to Pro"
-              target="_blank"
-              ><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a
-            >
-          </div>
-          <div id="navbar-menu">
+        </div>
+        <!-- <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                        <input
+                            type="text"
+                            value=""
+                            class="form-control"
+                            placeholder="Search dashboard..."
+                        />
+                        <span class="input-group-btn"
+                            ><button type="button" class="btn btn-primary">Go</button></span
+                        >
+                        </div>
+                    </form> -->
+        <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="dropdown-toggle icon-menu"
-                  data-toggle="dropdown"
+            <li class="dropdown">
+              <div class="datetime-container">
+								<div class="date-section">
+								<div class="label"> </div>
+								<div class="value" id="date"></div>
+							</div>
+							<div class="time-section">
+								<div class="label"></div>
+                <br>
+								<div class="value" id="time"></div>
+							</div>
+
+                <!-- <a
+                href="#"
+                class="dropdown-toggle icon-menu"
+                data-toggle="dropdown"
                 >
-                  <i class="lnr lnr-alarm"></i>
-                  <span class="badge bg-danger">5</span>
+                <i class="lnr lnr-alarm"></i>
+                <span class="badge bg-danger">5</span>
                 </a>
                 <ul class="dropdown-menu notifications">
-                  <li>
+                <li>
                     <a href="#" class="notification-item"
-                      ><span class="dot bg-warning"></span>System space is
-                      almost full</a
+                    ><span class="dot bg-warning"></span>System space is
+                    almost full</a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#" class="notification-item"
-                      ><span class="dot bg-danger"></span>You have 9 unfinished
-                      tasks</a
+                    ><span class="dot bg-danger"></span>You have 9 unfinished
+                    tasks</a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#" class="notification-item"
-                      ><span class="dot bg-success"></span>Monthly report is
-                      available</a
+                    ><span class="dot bg-success"></span>Monthly report is
+                    available</a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#" class="notification-item"
-                      ><span class="dot bg-warning"></span>Weekly meeting in 1
-                      hour</a
+                    ><span class="dot bg-warning"></span>Weekly meeting in 1
+                    hour</a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#" class="notification-item"
-                      ><span class="dot bg-success"></span>Your request has been
-                      approved</a
+                    ><span class="dot bg-success"></span>Your request has been
+                    approved</a
                     >
-                  </li>
-                  <li><a href="#" class="more">See all notifications</a></li>
+                </li>
+                <li><a href="#" class="more">See all notifications</a></li>
                 </ul>
-              </li>
-              <li class="dropdown">
+            </li> -->
+            <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                  ><i class="lnr lnr-question-circle"></i> <span>Help</span>
-                  <i class="icon-submenu lnr lnr-chevron-down"></i
+                ><i class="lnr lnr-question-circle"></i> <span>Help</span>
+                <i class="icon-submenu lnr lnr-chevron-down"></i
                 ></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Basic Use</a></li>
-                  <li><a href="#">Working With Data</a></li>
-                  <li><a href="#">Security</a></li>
-                  <li><a href="#">Troubleshooting</a></li>
+                <li><a href="#">Basic Use</a></li>
+                <li><a href="#">Working With Data</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Troubleshooting</a></li>
                 </ul>
-              </li>
-              <li class="dropdown">
+            </li> -->
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                  ><img
+                ><img
                     src="assets/img/user.png"
                     class="img-circle"
                     alt="Avatar" />
-                  <span>Samuel</span>
-                  <i class="icon-submenu lnr lnr-chevron-down"></i
+                <span>Cheol2_y</span>
+                <i class="icon-submenu lnr lnr-chevron-down"></i
                 ></a>
                 <ul class="dropdown-menu">
-                  <li>
+                <li>
                     <a href="#"
-                      ><i class="lnr lnr-user"></i> <span>My Profile</span></a
+                    ><i class="lnr lnr-user"></i> <span>My Profile</span></a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#"
-                      ><i class="lnr lnr-envelope"></i> <span>Message</span></a
+                    ><i class="lnr lnr-envelope"></i> <span>Message</span></a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#"
-                      ><i class="lnr lnr-cog"></i> <span>Settings</span></a
+                    ><i class="lnr lnr-cog"></i> <span>Settings</span></a
                     >
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#"
-                      ><i class="lnr lnr-exit"></i> <span>Logout</span></a
+                    ><i class="lnr lnr-exit"></i> <span>Logout</span></a
                     >
-                  </li>
+                </li>
                 </ul>
-              </li>
-              <!-- <li>
-							<a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
-						</li> -->
+            </li>
+            <!-- <li>
+                                        <a class="update-pro" href="https://www.themeineed.com/downloads/klorofil-pro-bootstrap-admin-dashboard-template/?utm_source=klorofil&utm_medium=template&utm_campaign=KlorofilPro" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>UPGRADE TO PRO</span></a>
+                                    </li> -->
             </ul>
-          </div>
         </div>
-      </nav>
-      <!-- END NAVBAR -->
-      <!-- LEFT SIDEBAR -->
-      <div id="sidebar-nav" class="sidebar">
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+    <!-- LEFT SIDEBAR -->
+    <div id="sidebar-nav" class="sidebar">
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
@@ -190,14 +197,19 @@
                             <span>Dashboard</span></a>
                     </li>
                     <li>
+                        <a href="table" class="">
+                            <i class="lnr lnr-dice"></i>
+                            <span>Stock Table</span></a>
+                    </li>
+                    <li>
                         <a href="charts" class="">
                             <i class="lnr lnr-chart-bars"></i>
-                            <span>Charts</span></a>
+                            <span>Predict Chart</span></a>
                     </li>
                     <li>
                         <a href="#subPages" data-toggle="collapse" class="collapsed">
                             <i class="lnr lnr-file-empty"></i> <span>Pages</span>
-                            <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <i class="icon-submenu lnr lnr-chevron-right"></i></a>
                             <div id="subPages" class="collapse">
                                 <ul class="nav">
                                     <li><a href="profile" class="">Profile</a></li>
@@ -206,418 +218,465 @@
                                 </ul>
                             </div>
                     </li>
-                    <li>
-                        <a href="table" class="">
-                            <i class="lnr lnr-dice"></i>
-                            <span>Stocks Table</span></a>
-                    </li>
                 </ul>
             </nav>
         </div>
     </div>
-      <!-- END LEFT SIDEBAR -->
-      <!-- MAIN -->
-      <div class="main">
+    <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
         <!-- MAIN CONTENT -->
         <div class="main-content">
-          <div class="container-fluid">
-            <div class="panel panel-profile">
-              <div class="clearfix">
-                <!-- LEFT COLUMN -->
-                <div class="profile-left">
-                  <!-- PROFILE HEADER -->
-                  <div class="profile-header">
-                    <div class="overlay"></div>
-                    <div class="profile-main">
-                      <img
-                        src="assets/img/user-medium.png"
-                        class="img-circle"
-                        alt="Avatar"
-                      />
-                      <h3 class="name">Samuel Gold</h3>
-                      <span class="online-status status-available"
-                        >Available</span
-                      >
-                    </div>
-                    <div class="profile-stat">
-                      <div class="row">
-                        <div class="col-md-4 stat-item">
-                          45 <span>Projects</span>
-                        </div>
-                        <div class="col-md-4 stat-item">
-                          15 <span>Awards</span>
-                        </div>
-                        <div class="col-md-4 stat-item">
-                          2174 <span>Points</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- END PROFILE HEADER -->
-                  <!-- PROFILE DETAIL -->
-                  <div class="profile-detail">
-                    <div class="profile-info">
-                      <h4 class="heading">Basic Info</h4>
-                      <ul class="list-unstyled list-justify">
-                        <li>Birthdate <span>24 Aug, 2016</span></li>
-                        <li>Mobile <span>(124) 823409234</span></li>
-                        <li>Email <span>samuel@mydomain.com</span></li>
-                        <li>
-                          Website
-                          <span
-                            ><a href="https://www.themeineed.com"
-                              >www.themeineed.com</a
-                            ></span
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="profile-info">
-                      <h4 class="heading">Social</h4>
-                      <ul class="list-inline social-icons">
-                        <li>
-                          <a href="#" class="facebook-bg"
-                            ><i class="fa fa-facebook"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="twitter-bg"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="google-plus-bg"
-                            ><i class="fa fa-google-plus"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="github-bg"
-                            ><i class="fa fa-github"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="profile-info">
-                      <h4 class="heading">About</h4>
-                      <p>
-                        Interactively fashion excellent information after
-                        distinctive outsourcing.
-                      </p>
-                    </div>
-                    <div class="text-center">
-                      <a href="#" class="btn btn-primary">Edit Profile</a>
-                    </div>
-                  </div>
-                  <!-- END PROFILE DETAIL -->
-                </div>
-                <!-- END LEFT COLUMN -->
-                <!-- RIGHT COLUMN -->
-                <div class="profile-right">
-                  <h4 class="heading">Samuel's Awards</h4>
-                  <!-- AWARDS -->
-                  <div class="awards">
-                    <div class="row">
-                      <div class="col-md-3 col-sm-6">
-                        <div class="award-item">
-                          <div class="hexagon">
-                            <span class="lnr lnr-sun award-icon"></span>
-                          </div>
-                          <span>Most Bright Idea</span>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-6">
-                        <div class="award-item">
-                          <div class="hexagon">
-                            <span class="lnr lnr-clock award-icon"></span>
-                          </div>
-                          <span>Most On-Time</span>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-6">
-                        <div class="award-item">
-                          <div class="hexagon">
-                            <span class="lnr lnr-magic-wand award-icon"></span>
-                          </div>
-                          <span>Problem Solver</span>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-6">
-                        <div class="award-item">
-                          <div class="hexagon">
-                            <span class="lnr lnr-heart award-icon"></span>
-                          </div>
-                          <span>Most Loved</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text-center">
-                      <a href="#" class="btn btn-default">See all awards</a>
-                    </div>
-                  </div>
-                  <!-- END AWARDS -->
-                  <!-- TABBED CONTENT -->
-                  <div class="custom-tabs-line tabs-line-bottom left-aligned">
-                    <ul class="nav" role="tablist">
-                      <li class="active">
-                        <a href="#tab-bottom-left1" role="tab" data-toggle="tab"
-                          >Recent Activity</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#tab-bottom-left2" role="tab" data-toggle="tab"
-                          >Projects <span class="badge">7</span></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab-bottom-left1">
-                      <ul class="list-unstyled activity-timeline">
-                        <li>
-                          <i class="fa fa-comment activity-icon"></i>
-                          <p>
-                            Commented on post <a href="#">Prototyping</a>
-                            <span class="timestamp">2 minutes ago</span>
-                          </p>
-                        </li>
-                        <li>
-                          <i class="fa fa-cloud-upload activity-icon"></i>
-                          <p>
-                            Uploaded new file <a href="#">Proposal.docx</a> to
-                            project <a href="#">New Year Campaign</a>
-                            <span class="timestamp">7 hours ago</span>
-                          </p>
-                        </li>
-                        <li>
-                          <i class="fa fa-plus activity-icon"></i>
-                          <p>
-                            Added <a href="#">Martin</a> and
-                            <a href="#">3 others colleagues</a> to project
-                            repository <span class="timestamp">Yesterday</span>
-                          </p>
-                        </li>
-                        <li>
-                          <i class="fa fa-check activity-icon"></i>
-                          <p>
-                            Finished 80% of all <a href="#">assigned tasks</a>
-                            <span class="timestamp">1 day ago</span>
-                          </p>
-                        </li>
-                      </ul>
-                      <div class="margin-top-30 text-center">
-                        <a href="#" class="btn btn-default">See all activity</a>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="tab-bottom-left2">
-                      <div class="table-responsive">
-                        <table class="table project-table">
-                          <thead>
-                            <tr>
-                              <th>Title</th>
-                              <th>Progress</th>
-                              <th>Leader</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td><a href="#">Spot Media</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuenow="60"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 60%"
-                                  >
-                                    <span>60% Complete</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user2.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Michael</a>
-                              </td>
-                              <td>
-                                <span class="label label-success">ACTIVE</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="#">E-Commerce Site</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuenow="33"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 33%"
-                                  >
-                                    <span>33% Complete</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user1.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Antonius</a>
-                              </td>
-                              <td>
-                                <span class="label label-warning">PENDING</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="#">Project 123GO</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuenow="68"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 68%"
-                                  >
-                                    <span>68% Complete</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user1.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Antonius</a>
-                              </td>
-                              <td>
-                                <span class="label label-success">ACTIVE</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="#">Wordpress Theme</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar"
-                                    role="progressbar"
-                                    aria-valuenow="75"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 75%"
-                                  >
-                                    <span>75%</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user2.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Michael</a>
-                              </td>
-                              <td>
-                                <span class="label label-success">ACTIVE</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="#">Project 123GO</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar progress-bar-success"
-                                    role="progressbar"
-                                    aria-valuenow="100"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 100%"
-                                  >
-                                    <span>100%</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user1.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Antonius</a>
-                              </td>
-                              <td>
-                                <span class="label label-default">CLOSED</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><a href="#">Redesign Landing Page</a></td>
-                              <td>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar progress-bar-success"
-                                    role="progressbar"
-                                    aria-valuenow="100"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                    style="width: 100%"
-                                  >
-                                    <span>100%</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <img
-                                  src="assets/img/user5.png"
-                                  alt="Avatar"
-                                  class="avatar img-circle"
-                                />
-                                <a href="#">Jason</a>
-                              </td>
-                              <td>
-                                <span class="label label-default">CLOSED</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- END TABBED CONTENT -->
-                </div>
-                <!-- END RIGHT COLUMN -->
-              </div>
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+            <div class="panel-heading">
+                <h3 class="panel-title">Weekly Overview</h3>
+                <p class="panel-subtitle">
+                Period: Oct 14, 2016 - Oct 21, 2016
+                </p>
             </div>
-          </div>
+            <div class="panel-body">
+                <div class="row">
+                <div class="col-md-3"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                <div id="headline-chart" class="ct-chart"></div>
+                </div>
+                <div class="col-md-3">
+                <div class="weekly-summary text-right">
+                    <span class="number">2,315</span>
+                    <span class="percentage"
+                    ><i class="fa fa-caret-up text-success"></i> 12%</span
+                    >
+                    <span class="info-label">Total Sales</span>
+                </div>
+                <div class="weekly-summary text-right">
+                    <span class="number">$5,758</span>
+                    <span class="percentage"
+                    ><i class="fa fa-caret-up text-success"></i> 23%</span
+                    >
+                    <span class="info-label">Monthly Income</span>
+                </div>
+                <div class="weekly-summary text-right">
+                    <span class="number">$65,938</span>
+                    <span class="percentage"
+                    ><i class="fa fa-caret-down text-danger"></i> 8%</span
+                    >
+                    <span class="info-label">Total Income</span>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- END OVERVIEW -->
+        <!-- OVERVIEW -->
+        <div class="panel panel-headline">
+            <div class="panel-heading">
+            <h3 class="panel-title">Stock Table</h3>
+            <p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
+            </div>
+            <div class="container">
+            <h2>Stock Table</h2>
+            <ul class="responsive-table">
+                <li class="table-header">
+                <div class="col col-1">기업명</div>
+                <div class="col col-2">현재가</div>
+                <div class="col col-3">전일가</div>
+                <div class="col col-4">고가</div>
+                <div class="col col-5">저가</div>
+                <div class="col col-6">거래량</div>
+                <div class="col col-7">등락율</div>
+                </li>   
+                <li class="table-row">
+                <div class="col col-1" data-label="name">삼성전자</div>
+                <div class="col col-2" data-label="close">70000</div>
+                <div class="col col-3" data-label="open">69800</div>
+                <div class="col col-4" data-label="high">72000</div>
+                <div class="col col-5" data-label="low">67000</div>
+                <div class="col col-6" data-label="volume">1300000</div>
+                <div class="col col-7" data-label="change">+0.21%</div>
+                </li>
+                <li class="table-row">
+                <div class="col col-1" data-label="name">삼성전자</div>
+                <div class="col col-2" data-label="close">70000</div>
+                <div class="col col-3" data-label="open">69800</div>
+                <div class="col col-4" data-label="high">72000</div>
+                <div class="col col-5" data-label="low">67000</div>
+                <div class="col col-6" data-label="volume">1300000</div>
+                <div class="col col-7" data-label="change">+0.21%</div>
+                </li>
+                <li class="table-row">
+                <div class="col col-1" data-label="name">삼성전자</div>
+                <div class="col col-2" data-label="close">70000</div>
+                <div class="col col-3" data-label="open">69800</div>
+                <div class="col col-4" data-label="high">72000</div>
+                <div class="col col-5" data-label="low">67000</div>
+                <div class="col col-6" data-label="volume">1300000</div>
+                <div class="col col-7" data-label="change">-1.21%</div>
+                </li>
+                <li class="table-row">
+                <div class="col col-1" data-label="name">LG화학</div>
+                <div class="col col-2" data-label="close">70000</div>
+                <div class="col col-3" data-label="open">69800</div>
+                <div class="col col-4" data-label="high">72000</div>
+                <div class="col col-5" data-label="low">67000</div>
+                <div class="col col-6" data-label="volume">1300000</div>
+                <div class="col col-7" data-label="change">-0.21%</div>
+                </li>
+            </ul>
+            </div>
+            <script src="./table.js"></script>
+        </div>
+        <!-- END OVERVIEW -->
+        <div class="row">
+            <div class="col-md-6">
+            <!-- RECENT PURCHASES -->
+            <div class="panel">
+                <div class="panel-heading">
+                <h3 class="panel-title">Top of the Rise Rate</h3>
+                <div class="right">
+                    <button type="button" class="btn-toggle-collapse">
+                    <i class="lnr lnr-chevron-up"></i>
+                    </button>
+                    <button type="button" class="btn-remove">
+                    <i class="lnr lnr-cross"></i>
+                    </button>
+                </div>
+                </div>
+                <div class="panel-body no-padding">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Stock Code</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="#">763648</a></td>
+                        <td>삼성전자</td>
+                        <td>$122</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">763649</a></td>
+                        <td>LG화학</td>
+                        <td>$62</td>
+                        <td>27%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">763650</a></td>
+                        <td>Michael</td>
+                        <td>$34</td>
+                        <td>22%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">763651</a></td>
+                        <td>Roger</td>
+                        <td>$186</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">763652</a></td>
+                        <td>Smith</td>
+                        <td>$362</td>
+                        <td>11%</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                    <span class="panel-note"
+                        ><i class="fa fa-clock-o"></i> Last 24 hours</span
+                    >
+                    </div>
+                    <div class="col-md-6 text-right">
+                    <a href="#" class="btn btn-primary">View All Purchases</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- END RECENT PURCHASES -->
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+                <!-- RECENT PURCHASES -->
+                <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Top of the Decline Rate</h3>
+                    <div class="right">
+                    <button type="button" class="btn-toggle-collapse">
+                        <i class="lnr lnr-chevron-up"></i>
+                    </button>
+                    <button type="button" class="btn-remove">
+                        <i class="lnr lnr-cross"></i>
+                    </button>
+                    </div>
+                </div>
+                <div class="panel-body no-padding">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Stock Code</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><a href="#">763648</a></td>
+                        <td>Steve</td>
+                        <td>$122</td>
+                        <td>-15%</td>
+                        </tr>
+                        <tr>
+                        <td><a href="#">763649</a></td>
+                        <td>Amber</td>
+                        <td>$62</td>
+                        <td>-12%</td>
+                        </tr>
+                        <tr>
+                        <td><a href="#">763650</a></td>
+                        <td>Michael</td>
+                        <td>$34</td>
+                        <td>-10%</td>
+                        </tr>
+                        <tr>
+                        <td><a href="#">763651</a></td>
+                        <td>Roger</td>
+                        <td>$186</td>
+                        <td>-9%</td>
+                        </tr>
+                        <tr>
+                        <td><a href="#">763652</a></td>
+                        <td>Smith</td>
+                        <td>$362</td>
+                        <td>-5%</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <span class="panel-note"
+                        ><i class="fa fa-clock-o"></i> Last 24 hours</span
+                        >
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="#" class="btn btn-primary"
+                        >View All Purchases</a
+                        >
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- END RECENT PURCHASES -->
+
+                <div class="col-md-6"></div>
+                <!-- MULTI CHARTS -->
+                <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Projection vs. Realization</h3>
+                    <div class="right">
+                    <button type="button" class="btn-toggle-collapse">
+                        <i class="lnr lnr-chevron-up"></i>
+                    </button>
+                    <button type="button" class="btn-remove">
+                        <i class="lnr lnr-cross"></i>
+                    </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="visits-trends-chart" class="ct-chart"></div>
+                </div>
+                </div>
+                <!-- END MULTI CHARTS -->
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-4">
+                <!-- TASKS -->
+                <!-- END TASKS -->
+            </div>
+            <div class="col-md-4">
+                <!-- VISIT CHART -->
+                <!-- END VISIT CHART -->
+            </div>
+            <div class="col-md-4">
+                <!-- REALTIME CHART -->
+                <!-- END REALTIME CHART -->
+            </div>
+            </div>
+        </div>
         </div>
         <!-- END MAIN CONTENT -->
-      </div>
-      <!-- END MAIN -->
-      <div class="clearfix"></div>
-      <footer>
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <footer>
         <div class="container-fluid">
-          <p class="copyright">
+        <p class="copyright">
             Shared by <i class="fa fa-love"></i
             ><a href="https://bootstrapthemes.co">BootstrapThemes</a>
-          </p>
+        </p>
         </div>
-      </footer>
+    </footer>
     </div>
     <!-- END WRAPPER -->
     <!-- Javascript -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/klorofil-common.js"></script>
-  </body>
+    <script src="assets/scripts/time.js"></script>
+    <script>
+    $(function () {
+        var data, options;
+
+        // headline charts
+        data = {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        series: [
+            [23, 29, 24, 40, 25, 24, 35],
+            [14, 25, 18, 34, 29, 38, 44],
+        ],
+        };
+
+        options = {
+        height: 300,
+        showArea: true,
+        showLine: false,
+        showPoint: false,
+        fullWidth: true,
+        axisX: {
+            showGrid: false,
+        },
+        lineSmooth: false,
+        };
+
+        new Chartist.Line("#headline-chart", data, options);
+
+        // visits trend charts
+        data = {
+        labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
+        series: [
+            {
+            name: "series-real",
+            data: [
+                200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900,
+            ],
+            },
+            {
+            name: "series-projection",
+            data: [
+                240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800,
+            ],
+            },
+        ],
+        };
+
+        options = {
+        fullWidth: true,
+        lineSmooth: false,
+        height: "270px",
+        low: 0,
+        high: "auto",
+        series: {
+            "series-projection": {
+            showArea: true,
+            showPoint: false,
+            showLine: false,
+            },
+        },
+        axisX: {
+            showGrid: false,
+        },
+        axisY: {
+            showGrid: false,
+            onlyInteger: true,
+            offset: 0,
+        },
+        chartPadding: {
+            left: 20,
+            right: 20,
+        },
+        };
+
+        new Chartist.Line("#visits-trends-chart", data, options);
+
+        // visits chart
+        data = {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        series: [[6384, 6342, 5437, 2764, 3958, 5068, 7654]],
+        };
+
+        options = {
+        height: 300,
+        axisX: {
+            showGrid: false,
+        },
+        };
+
+        new Chartist.Bar("#visits-chart", data, options);
+
+        // real-time pie chart
+        var sysLoad = $("#system-load").easyPieChart({
+        size: 130,
+        barColor: function (percent) {
+            return (
+            "rgb(" +
+            Math.round((200 * percent) / 100) +
+            ", " +
+            Math.round(200 * (1.1 - percent / 100)) +
+            ", 0)"
+            );
+        },
+        trackColor: "rgba(245, 245, 245, 0.8)",
+        scaleColor: false,
+        lineWidth: 5,
+        lineCap: "square",
+        animate: 800,
+        });
+
+        var updateInterval = 3000; // in milliseconds
+
+        // setInterval(function () {
+        //   var randomVal;
+        //   randomVal = getRandomInt(0, 100);
+
+        //   sysLoad.data("easyPieChart").update(randomVal);
+        //   sysLoad.find(".percent").text(randomVal);
+        // }, updateInterval);
+
+        function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    });
+    </script>
+</body>
 </html>

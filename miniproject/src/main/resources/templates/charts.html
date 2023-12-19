@@ -226,164 +226,215 @@
       <!-- MAIN -->
       <div class="main">
         <!-- MAIN CONTENT -->
-        <canvas id="myChart" width="400" height="200"></canvas>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <div class="main-content">
+          <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+              <div class="panel-heading">
+                <h3 class="panel-title">Weekly Overview</h3>
+                <p class="panel-subtitle">
+                  Period: Oct 14, 2016 - Oct 21, 2016
+                </p>
+                <canvas id="myChart" width="400" height="200"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        
+                <script>
+                  const stockData = [
+                    { x: "2023-07-31", y: 71500.0 },
+                    { x: "2023-08-01", y: 71500.0 },
+                    { x: "2023-08-02", y: 71300.0 },
+                    { x: "2023-08-03", y: 71100.0 },
+                    { x: "2023-08-04", y: 71100.0 },
+                    { x: "2023-08-07", y: 70500.0 },
+                    { x: "2023-08-08", y: 70400.0 },
+                    { x: "2023-08-09", y: 70200.0 },
+                    { x: "2023-08-10", y: 69900.0 },
+                    { x: "2023-08-11", y: 69700.0 },
+                    { x: "2023-08-14", y: 69100.0 },
+                    { x: "2023-08-16", y: 68700.0 },
+                    { x: "2023-08-17", y: 68500.0 },
+                    { x: "2023-08-18", y: 68400.0 },
+                    { x: "2023-08-21", y: 67900.0 },
+                    { x: "2023-08-22", y: 67900.0 },
+                    { x: "2023-08-23", y: 67800.0 },
+                    { x: "2023-08-24", y: 67700.0 },
+                    { x: "2023-08-25", y: 67700.0 },
+                    { x: "2023-08-28", y: 67700.0 },
+                    { x: "2023-08-29", y: 67900.0 },
+                    { x: "2023-08-30", y: 67900.0 },
+                    { x: "2023-08-31", y: 67900.0 },
+                    { x: "2023-09-01", y: 68100.0 },
+                    { x: "2023-09-04", y: 68400.0 },
+                    { x: "2023-09-05", y: 68600.0 },
+                    { x: "2023-09-06", y: 68700.0 },
+                    { x: "2023-09-07", y: 68800.0 },
+                    { x: "2023-09-08", y: 69000.0 },
+                    { x: "2023-09-11", y: 69300.0 },
+                    { x: "2023-09-12", y: 69400.0 },
+                    { x: "2023-09-13", y: 69400.0 },
+                    { x: "2023-09-14", y: 69400.0 },
+                    { x: "2023-09-15", y: 69500.0 },
+                    { x: "2023-09-18", y: 69400.0 },
+                    { x: "2023-09-19", y: 69400.0 },
+                    { x: "2023-09-20", y: 69300.0 },
+                    { x: "2023-09-21", y: 69200.0 },
+                    { x: "2023-09-22", y: 69100.0 },
+                    { x: "2023-09-25", y: 68700.0 },
+                    { x: "2023-09-26", y: 68700.0 },
+                    { x: "2023-09-27", y: 68500.0 },
+                    { x: "2023-10-04", y: 67600.0 },
+                    { x: "2023-10-05", y: 67500.0 },
+                    { x: "2023-10-06", y: 67400.0 },
+                    { x: "2023-10-10", y: 67400.0 },
+                    { x: "2023-10-11", y: 67300.0 },
+                    { x: "2023-10-12", y: 67300.0 },
+                    { x: "2023-10-13", y: 67400.0 },
+                    { x: "2023-10-16", y: 67600.0 },
+                    { x: "2023-10-17", y: 67800.0 },
+                    { x: "2023-10-18", y: 67800.0 },
+                    { x: "2023-10-19", y: 67800.0 },
+                    { x: "2023-10-20", y: 68000.0 },
+                    { x: "2023-10-23", y: 68300.0 },
+                    { x: "2023-10-24", y: 68500.0 },
+                    { x: "2023-10-25", y: 68500.0 },
+                    { x: "2023-10-26", y: 68500.0 },
+                    { x: "2023-10-27", y: 68700.0 },
+                    { x: "2023-10-30", y: 69000.0 },
+                    { x: "2023-10-31", y: 69200.0 },
+                    { x: "2023-11-01", y: 69200.0 },
+                    { x: "2023-11-02", y: 69300.0 },
+                    { x: "2023-11-03", y: 69400.0 },
+                    { x: "2023-11-06", y: 69800.0 },
+                    { x: "2023-11-07", y: 70000.0 },
+                    { x: "2023-11-08", y: 70100.0 },
+                    { x: "2023-11-09", y: 70100.0 },
+                    { x: "2023-11-10", y: 70400.0 },
+                    { x: "2023-11-13", y: 70800.0 },
+                    { x: "2023-11-14", y: 71100.0 },
+                    { x: "2023-11-15", y: 71200.0 },
+                    { x: "2023-11-16", y: 71300.0 },
+                    { x: "2023-11-17", y: 71600.0 },
+                    { x: "2023-11-20", y: 72100.0 },
+                    { x: "2023-11-21", y: 72400.0 },
+                    { x: "2023-11-22", y: 72500.0 },
+                    { x: "2023-11-23", y: 72600.0 },
+                    { x: "2023-11-24", y: 72800.0 },
+                    { x: "2023-11-27", y: 73200.0 },
+                    { x: "2023-11-28", y: 73300.0 },
+                    { x: "2023-11-29", y: 73300.0 },
+                    { x: "2023-11-30", y: 73300.0 },
+                    { x: "2023-12-01", y: 73400.0 },
+                    { x: "2023-12-04", y: 73300.0 },
+                    { x: "2023-12-05", y: 73300.0 },
+                    { x: "2023-12-06", y: 73200.0 },
+                    { x: "2023-12-07", y: 73000.0 },
+                    { x: "2023-12-08", y: 73000.0 },
+                    { x: "2023-12-11", y: 72600.0 },
+                    { x: "2023-12-12", y: 72500.0 },
+                    { x: "2023-12-13", y: 72300.0 },
+                    { x: "2023-12-14", y: 72100.0 },
+                    { x: "2023-12-15", y: 72000.0 },
+                    { x: "2023-12-18", y: 71600.0 },
+                    { x: "2023-12-19", y: 71500.0 },
+                    { x: "2023-12-20", y: 71400.0 },
+                    { x: "2023-12-21", y: 71200.0 },
+                    { x: "2023-12-22", y: 71300.0 },
+                  ];
+                  const ctx = document.getElementById("myChart").getContext("2d");
+                  const myChart = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                      // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                      datasets: [
+                        {
+                          label: "주식 가격",
+                          data: stockData,
+                          backgroundColor: "rgba(255, 99, 132, 0.2)",
+                          borderColor: "rgba(255, 99, 132, 1)",
+                          borderWidth: 2,
+                          pointRadius: 3,
+                          pointBackgroundColor: "rgba(255, 99, 132, 1)",
+                          fill: true,
+                        },
+                      ],
+                    },
+                    options: {
+                      scales: {
+                        // x: {
+                        //   type: "time",
+                        //   time: {
+                        //     unit: "day",
+                        //     tooltipFormat: "YYYY-MM-DD",
+                        //   },
+                        // },
+                        y: {
+                          beginAtZero: false,
+                        },
+                      },
+                      plugins: {
+                        tooltip: {
+                          callbacks: {
+                            label: (context) =>
+                              new Intl.NumberFormat("en-US", {
+                                style: "currency",
+                                currency: "KRW",
+                              }).format(context.parsed.y),
+                          },
+                        },
+                      },
+                      elements: {
+                        line: {
+                          tension: 0.2,
+                        },
+                      },
+                    },
+                  });
+                </script>
+              </div>
+            </div>
+            </div>
+          </div>
+          <!-- END OVERVIEW -->
+        
+                <div class="col-md-6"></div>
+                <!-- MULTI CHARTS -->
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Projection vs. Realization</h3>
+                    <div class="right">
+                      <button type="button" class="btn-toggle-collapse">
+                        <i class="lnr lnr-chevron-up"></i>
+                      </button>
+                      <button type="button" class="btn-remove">
+                        <i class="lnr lnr-cross"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div id="visits-trends-chart" class="ct-chart"></div>
+                  </div>
+                </div>
+                <!-- END MULTI CHARTS -->
+              </div>
+            </div>
 
-        <script>
-          const stockData = [
-            { x: "2023-07-31", y: 71500.0 },
-            { x: "2023-08-01", y: 71500.0 },
-            { x: "2023-08-02", y: 71300.0 },
-            { x: "2023-08-03", y: 71100.0 },
-            { x: "2023-08-04", y: 71100.0 },
-            { x: "2023-08-07", y: 70500.0 },
-            { x: "2023-08-08", y: 70400.0 },
-            { x: "2023-08-09", y: 70200.0 },
-            { x: "2023-08-10", y: 69900.0 },
-            { x: "2023-08-11", y: 69700.0 },
-            { x: "2023-08-14", y: 69100.0 },
-            { x: "2023-08-16", y: 68700.0 },
-            { x: "2023-08-17", y: 68500.0 },
-            { x: "2023-08-18", y: 68400.0 },
-            { x: "2023-08-21", y: 67900.0 },
-            { x: "2023-08-22", y: 67900.0 },
-            { x: "2023-08-23", y: 67800.0 },
-            { x: "2023-08-24", y: 67700.0 },
-            { x: "2023-08-25", y: 67700.0 },
-            { x: "2023-08-28", y: 67700.0 },
-            { x: "2023-08-29", y: 67900.0 },
-            { x: "2023-08-30", y: 67900.0 },
-            { x: "2023-08-31", y: 67900.0 },
-            { x: "2023-09-01", y: 68100.0 },
-            { x: "2023-09-04", y: 68400.0 },
-            { x: "2023-09-05", y: 68600.0 },
-            { x: "2023-09-06", y: 68700.0 },
-            { x: "2023-09-07", y: 68800.0 },
-            { x: "2023-09-08", y: 69000.0 },
-            { x: "2023-09-11", y: 69300.0 },
-            { x: "2023-09-12", y: 69400.0 },
-            { x: "2023-09-13", y: 69400.0 },
-            { x: "2023-09-14", y: 69400.0 },
-            { x: "2023-09-15", y: 69500.0 },
-            { x: "2023-09-18", y: 69400.0 },
-            { x: "2023-09-19", y: 69400.0 },
-            { x: "2023-09-20", y: 69300.0 },
-            { x: "2023-09-21", y: 69200.0 },
-            { x: "2023-09-22", y: 69100.0 },
-            { x: "2023-09-25", y: 68700.0 },
-            { x: "2023-09-26", y: 68700.0 },
-            { x: "2023-09-27", y: 68500.0 },
-            { x: "2023-10-04", y: 67600.0 },
-            { x: "2023-10-05", y: 67500.0 },
-            { x: "2023-10-06", y: 67400.0 },
-            { x: "2023-10-10", y: 67400.0 },
-            { x: "2023-10-11", y: 67300.0 },
-            { x: "2023-10-12", y: 67300.0 },
-            { x: "2023-10-13", y: 67400.0 },
-            { x: "2023-10-16", y: 67600.0 },
-            { x: "2023-10-17", y: 67800.0 },
-            { x: "2023-10-18", y: 67800.0 },
-            { x: "2023-10-19", y: 67800.0 },
-            { x: "2023-10-20", y: 68000.0 },
-            { x: "2023-10-23", y: 68300.0 },
-            { x: "2023-10-24", y: 68500.0 },
-            { x: "2023-10-25", y: 68500.0 },
-            { x: "2023-10-26", y: 68500.0 },
-            { x: "2023-10-27", y: 68700.0 },
-            { x: "2023-10-30", y: 69000.0 },
-            { x: "2023-10-31", y: 69200.0 },
-            { x: "2023-11-01", y: 69200.0 },
-            { x: "2023-11-02", y: 69300.0 },
-            { x: "2023-11-03", y: 69400.0 },
-            { x: "2023-11-06", y: 69800.0 },
-            { x: "2023-11-07", y: 70000.0 },
-            { x: "2023-11-08", y: 70100.0 },
-            { x: "2023-11-09", y: 70100.0 },
-            { x: "2023-11-10", y: 70400.0 },
-            { x: "2023-11-13", y: 70800.0 },
-            { x: "2023-11-14", y: 71100.0 },
-            { x: "2023-11-15", y: 71200.0 },
-            { x: "2023-11-16", y: 71300.0 },
-            { x: "2023-11-17", y: 71600.0 },
-            { x: "2023-11-20", y: 72100.0 },
-            { x: "2023-11-21", y: 72400.0 },
-            { x: "2023-11-22", y: 72500.0 },
-            { x: "2023-11-23", y: 72600.0 },
-            { x: "2023-11-24", y: 72800.0 },
-            { x: "2023-11-27", y: 73200.0 },
-            { x: "2023-11-28", y: 73300.0 },
-            { x: "2023-11-29", y: 73300.0 },
-            { x: "2023-11-30", y: 73300.0 },
-            { x: "2023-12-01", y: 73400.0 },
-            { x: "2023-12-04", y: 73300.0 },
-            { x: "2023-12-05", y: 73300.0 },
-            { x: "2023-12-06", y: 73200.0 },
-            { x: "2023-12-07", y: 73000.0 },
-            { x: "2023-12-08", y: 73000.0 },
-            { x: "2023-12-11", y: 72600.0 },
-            { x: "2023-12-12", y: 72500.0 },
-            { x: "2023-12-13", y: 72300.0 },
-            { x: "2023-12-14", y: 72100.0 },
-            { x: "2023-12-15", y: 72000.0 },
-            { x: "2023-12-18", y: 71600.0 },
-            { x: "2023-12-19", y: 71500.0 },
-            { x: "2023-12-20", y: 71400.0 },
-            { x: "2023-12-21", y: 71200.0 },
-            { x: "2023-12-22", y: 71300.0 },
-          ];
-          const ctx = document.getElementById("myChart").getContext("2d");
-          const myChart = new Chart(ctx, {
-            type: "line",
-            data: {
-              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-              datasets: [
-                {
-                  label: "주식 가격",
-                  data: stockData,
-                  backgroundColor: "rgba(255, 99, 132, 0.2)",
-                  borderColor: "rgba(255, 99, 132, 1)",
-                  borderWidth: 2,
-                  pointRadius: 3,
-                  pointBackgroundColor: "rgba(255, 99, 132, 1)",
-                  fill: true,
-                },
-              ],
-            },
-            options: {
-              scales: {
-                // x: {
-                //   type: "time",
-                //   time: {
-                //     unit: "day",
-                //     tooltipFormat: "YYYY-MM-DD",
-                //   },
-                // },
-                y: {
-                  beginAtZero: false,
-                },
-              },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: (context) =>
-                      new Intl.NumberFormat("en-US", {
-                        style: "currency",
-                        currency: "KRW",
-                      }).format(context.parsed.y),
-                  },
-                },
-              },
-              elements: {
-                line: {
-                  tension: 0.2,
-                },
-              },
-            },
-          });
-        </script>
+            <div class="row">
+              <div class="col-md-4">
+                <!-- TASKS -->
+                <!-- END TASKS -->
+              </div>
+              <div class="col-md-4">
+                <!-- VISIT CHART -->
+                <!-- END VISIT CHART -->
+              </div>
+              <div class="col-md-4">
+                <!-- REALTIME CHART -->
+                <!-- END REALTIME CHART -->
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- END MAIN CONTENT -->
-      </div>
-      <!-- END MAIN -->
       <div class="clearfix"></div>
       <footer>
         <div class="container-fluid">
@@ -401,127 +452,6 @@
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/klorofil-common.js"></script>
-    <script>
-      $(function () {
-        var options;
-
-        var data = {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          series: [
-            [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-          ],
-        };
-
-        // line chart
-        options = {
-          height: "300px",
-          showPoint: true,
-          axisX: {
-            showGrid: false,
-          },
-          lineSmooth: false,
-        };
-
-        new Chartist.Line("#demo-line-chart", data, options);
-
-        // bar chart
-        options = {
-          height: "300px",
-          axisX: {
-            showGrid: false,
-          },
-        };
-
-        new Chartist.Bar("#demo-bar-chart", data, options);
-
-        // area chart
-        options = {
-          height: "270px",
-          showArea: true,
-          showLine: false,
-          showPoint: false,
-          axisX: {
-            showGrid: false,
-          },
-          lineSmooth: false,
-        };
-
-        new Chartist.Line("#demo-area-chart", data, options);
-
-        // multiple chart
-        var data = {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          series: [
-            {
-              name: "series-real",
-              data: [
-                200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900,
-              ],
-            },
-            {
-              name: "series-projection",
-              data: [
-                240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800,
-              ],
-            },
-          ],
-        };
-
-        var options = {
-          fullWidth: true,
-          lineSmooth: false,
-          height: "270px",
-          low: 0,
-          high: "auto",
-          series: {
-            "series-projection": {
-              showArea: true,
-              showPoint: false,
-              showLine: false,
-            },
-          },
-          axisX: {
-            showGrid: false,
-          },
-          axisY: {
-            showGrid: false,
-            onlyInteger: true,
-            offset: 0,
-          },
-          chartPadding: {
-            left: 20,
-            right: 20,
-          },
-        };
-
-        new Chartist.Line("#multiple-chart", data, options);
-      });
-    </script>
+    
   </body>
 </html>

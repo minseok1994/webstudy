@@ -40,6 +40,11 @@ public class SecurityController {
         return "select";
     }
 
+    @GetMapping("/index")
+    public String ind() {
+        log.info("[SecurityController][select] start");
+        return "index";
+    }
     @GetMapping("/user")
     public @ResponseBody String user() {
         log.info("[SecurityController][user] start");

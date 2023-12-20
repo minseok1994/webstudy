@@ -1,11 +1,6 @@
 // 날짜별 데이터 가져오기 함수
-function fetchStocksByDate(period) {
-    if (!selectedStockName) {
-        alert('먼저 주식을 검색해 주세요.');
-        return;
-    }
-
-    fetch(`http://localhost:8000/api/stockData?selectedStockName=${selectedStockName}&period=${period}`)
+function fetchStocksByDate(period, stockName) {
+    fetch(`http://localhost:8000/api/stockData?selectedStockName=${stockName}&period=${period}`)
         .then(response => response.json())
         .then(data => {
             drawChart(data); // 차트 그리기
@@ -85,7 +80,6 @@ function updateTable(data) {
     tableBody.innerHTML = '';
     var row = `
         <tr>
-                <td>${index + 1}</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
@@ -97,3 +91,26 @@ function updateTable(data) {
     `;
     tableBody.innerHTML = row;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let selectedStockName = urlParams.get('name');
+
+    if (!selectedStockName) {
+        // 세션에 저장된 주식명이 없는 경우 서버에서 주식 목록을 가져옴
+        fetch('http://localhost:8000/api/stocks')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    // 첫 번째 주식을 기본 주식으로 설정
+                    selectedStockName = data[0].Name;
+                }
+                fetchStocksByDate('1week', selectedStockName); // 기본 기간 설정
+            })
+            .catch(error => console.error('Error:', error));
+    } else {
+        // 세션에 저장된 주식명이 있는 경우 해당 주식 데이터 로드
+        fetchStocksByDate('1week', selectedStockName); // 기본 기간 설정
+    }
+});
+

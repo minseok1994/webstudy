@@ -17,7 +17,7 @@ function updateTableWithAllStocks(data) {
     data.forEach((stock) => {
         var row = `
             <tr>
-                <td>${stock.Name}</td>
+                <td class="stock-name" data-name="${stock.Name}">${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
                 <td>${stock.High}</td>
@@ -27,6 +27,12 @@ function updateTableWithAllStocks(data) {
             </tr>
         `;
         tableBody.innerHTML += row;
+    });
+
+    document.querySelectorAll('.stock-name').forEach(item => {
+        item.addEventListener('click', function() {
+            window.location.href = `charts.html?name=${this.dataset.name}`;
+        });
     });
 }
 
@@ -47,13 +53,13 @@ if (document.getElementById('searchButtonSelect')) {
     });
 }
 
-// 데이터 테이블 업데이트 함수
+// 검색 데이터 테이블 업데이트 함수
 function updateTable(stock) {
     var tableBody = document.querySelector('table tbody');
     tableBody.innerHTML = '';
     var row = `
         <tr>
-                <td>${stock.Name}</td>
+                <td class="stock-name" data-name="${stock.Name}">${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
                 <td>${stock.High}</td>
@@ -64,6 +70,8 @@ function updateTable(stock) {
     `;
     tableBody.innerHTML = row;
 }
+
+// 페이지 버튼 !!!
 // 전역 변수로 현재 페이지 번호 및 페이지 범위 관리
 let currentPage = 0;
 const itemsPerPage = 20;
@@ -133,45 +141,43 @@ function fetchPageData(pageNumber) {
         .catch(error => console.error('Error:', error));
 }
 
-// 페이지 데이터 가져오기 함수
-function fetchPageData(pageNumber) {
-    fetch(`http://localhost:8000/api/stocks?page=${pageNumber}&limit=${itemsPerPage}`)
-        .then(response => response.json())
-        .then(data => updateTableWithStocks(data))
-        .catch(error => console.error('Error:', error));
-}
-
 // 페이지 로드 시 페이지네이션 초기화
 document.addEventListener('DOMContentLoaded', function() {
     if (document.body.classList.contains('main-page')) {
         initializePagination();
+        fetchPageData(0);
     }
 });
 
 
-// updateTableWithStocks
+// 페이지 넘길 때 가져오는 데이터
 function updateTableWithStocks(data, clearTable = true) {
     const tableBody = document.querySelector('table tbody');
     if (clearTable) tableBody.innerHTML = ''; // 테이블 초기화
-    data.forEach((stock) => {
-        const row = `
-            <tr>
-                <td>${stock.Name}</td>
-                <td>${stock.Close}</td>
-                <td>${stock.Open}</td>
-                <td>${stock.High}</td>
-                <td>${stock.Low}</td>
-                <td>${stock.Volume}</td>
-                <td>${stock.Changes}</td>
-            </tr>
+
+    data.forEach(stock => {
+        const row = document.createElement('tr'); // 새로운 행 생성
+        row.innerHTML = `
+            <td>${stock.Name}</td>
+            <td>${stock.Close}</td>
+            <td>${stock.Open}</td>
+            <td>${stock.High}</td>
+            <td>${stock.Low}</td>
+            <td>${stock.Volume}</td>
+            <td>${stock.Changes}</td>
         `;
-        tableBody.innerHTML += row;
+
+        row.addEventListener('click', () => {
+            window.location.href = `charts?name=${stock.Name}`; // 행 클릭 시 이동
+        });
+
+        tableBody.appendChild(row); // 생성된 행을 테이블에 추가
     });
 }
 
-    // 페이지네이션 초기화 및 초기 데이터 로드
+    // 페이지네이션 초기화
     createPagination();
-    fetchPageData(0);
+    
 
 
 // 날짜별 데이터 가져오기 함수 (select.html용)

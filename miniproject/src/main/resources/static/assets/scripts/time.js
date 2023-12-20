@@ -1,23 +1,29 @@
-
 function updateDateTime() {
-  const currentDateTime = new Date();
+  var currentDate = new Date();
+  var year = currentDate.getFullYear();
+  var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+  var day = ("0" + currentDate.getDate()).slice(-2);
+  var hours = ("0" + currentDate.getHours()).slice(-2);
+  var minutes = ("0" + currentDate.getMinutes()).slice(-2);
+  var seconds = ("0" + currentDate.getSeconds()).slice(-2);
 
-  // 날짜 정보 추출
-  const year = currentDateTime.getFullYear();
-  const month = (currentDateTime.getMonth() + 1).toString().padStart(2, '0');
-  const day = currentDateTime.getDate().toString().padStart(2, '0');
+  var formattedDate =
+    year +
+    "-" +
+    month +
+    "-" +
+    day +
+    " " +
+    hours +
+    ":" +
+    minutes +
+    ":" +
+    seconds;
 
-  // 시간 정보 추출
-  const hours = currentDateTime.getHours().toString().padStart(2, '0');
-  const minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
-  const seconds = currentDateTime.getSeconds().toString().padStart(2, '0');
-
-  // HTML에 날짜와 시간 정보 추가
-  document.getElementById('date').innerText = `${year}-${month}-${day}`;
-  document.getElementById('time').innerText = `${hours}:${minutes}:${seconds}`;
+  document.getElementById("currentDateTime").innerHTML = formattedDate;
 }
 
-// 페이지 로드 시 최초 업데이트
+// 페이지 로드 후 초기 업데이트
 updateDateTime();
 
 // 1초마다 업데이트

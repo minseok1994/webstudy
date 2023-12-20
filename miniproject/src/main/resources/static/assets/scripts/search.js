@@ -14,10 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateTableWithAllStocks(data) {
     var tableBody = document.querySelector('table tbody');
     tableBody.innerHTML = '';
-    data.forEach((stock, index) => {
+    data.forEach((stock) => {
         var row = `
             <tr>
-                <td>1</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
@@ -49,12 +48,11 @@ if (document.getElementById('searchButtonSelect')) {
 }
 
 // 데이터 테이블 업데이트 함수
-function updateTable(data) {
+function updateTable(stock) {
     var tableBody = document.querySelector('table tbody');
     tableBody.innerHTML = '';
     var row = `
         <tr>
-                <td>${index + 1}</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
@@ -155,11 +153,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateTableWithStocks(data, clearTable = true) {
     const tableBody = document.querySelector('table tbody');
     if (clearTable) tableBody.innerHTML = ''; // 테이블 초기화
-    data.forEach((stock, index) => {
-        const absoluteIndex = currentPage * itemsPerPage + index + 1
+    data.forEach((stock) => {
         const row = `
             <tr>
-                <td>${absoluteIndex}</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>

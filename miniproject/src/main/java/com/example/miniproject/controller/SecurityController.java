@@ -1,6 +1,9 @@
 package com.example.miniproject.controller;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -119,5 +122,16 @@ public class SecurityController {
     @GetMapping("/secured-roles")
     public @ResponseBody String securedRoles() {
         return "securedRoles";
+    }
+
+    @GetMapping("/fetch-message")
+    public ResponseEntity<?> fetchMessage(HttpSession session) {
+        String message = (String) session.getAttribute("message");
+        if (message != null) {
+            session.removeAttribute("message"); // 메시지 표시 후 세션에서 제거
+            return ResponseEntity.ok().body(Collections.singletonMap("message", message));
+        } else {
+            return ResponseEntity.noContent().build(); // 메시지가 없을 경우 No Content 응답
+        }
     }
 }

@@ -48,6 +48,10 @@ public class PrincipalDetails implements UserDetails {
         return usersEntity.getUsername();
     }
 
+    public String getEmail() {
+        return usersEntity.getEmail(); // UsersEntity 클래스에 getEmail() 메서드가 정의되어 있어야 합니다.
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         log.info("[PrincipalDetails][isAccountNonExpired] start");

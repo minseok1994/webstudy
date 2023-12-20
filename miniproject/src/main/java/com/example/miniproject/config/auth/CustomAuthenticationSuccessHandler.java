@@ -21,6 +21,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         log.info("Login Success. Session ID: " + session.getId());
 
         // 로그인 성공 후의 리디렉션 또는 추가 로직 구현
-        response.sendRedirect("/?loginSuccess=true");
+        response.sendRedirect("/");
+        session.setAttribute("message", "로그인에 성공했습니다.");
     }
 }

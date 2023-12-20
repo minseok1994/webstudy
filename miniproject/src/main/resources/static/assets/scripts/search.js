@@ -59,14 +59,14 @@ function updateTable(stock) {
     tableBody.innerHTML = '';
     var row = `
         <tr>
-                <td class="stock-name" data-name="${stock.Name}">${stock.Name}</td>
-                <td>${stock.Close}</td>
-                <td>${stock.Open}</td>
-                <td>${stock.High}</td>
-                <td>${stock.Low}</td>
-                <td>${stock.Volume}</td>
-                <td>${stock.Changes}</td>
-            </tr>
+            <td class="stock-name" data-name="${stock.Name}">${stock.Name}</td>
+            <td>${stock.Close}</td>
+            <td>${stock.Open}</td>
+            <td>${stock.High}</td>
+            <td>${stock.Low}</td>
+            <td>${stock.Volume}</td>
+            <td>${stock.Changes}</td>
+        </tr>
     `;
     tableBody.innerHTML = row;
 }

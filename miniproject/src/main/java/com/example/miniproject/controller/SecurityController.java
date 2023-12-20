@@ -34,8 +34,18 @@ public class SecurityController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/")
-    public String main() {
+    public String main(RedirectAttributes redirectAttributes, HttpServletRequest request) {
         log.info("[SecurityController][main] start");
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String message = (String) session.getAttribute("message");
+            if (message != null) {
+                redirectAttributes.addFlashAttribute("message", message);
+                session.removeAttribute("message");
+            }
+        }
+
         return "index";
     }
 

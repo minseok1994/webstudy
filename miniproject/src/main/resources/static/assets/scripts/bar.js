@@ -30,18 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/fetch-message')
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else if (response.status === 204) {
-            throw new Error('No message available');
-        }
-    })
-    .then(data => {
-        if (data && data.message) {
-            alert(data.message);
-        }
-    })
-    .catch(error => console.log(error.message));
-
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('No message available');
+            }
+        })
+        .then(data => {
+            if (data && data.message) {
+                alert(data.message); // 메시지를 alert로 표시
+            }
+        })
+        .catch(error => console.error(error.message));
 });

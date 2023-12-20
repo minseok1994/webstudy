@@ -1,9 +1,15 @@
 // 날짜별 데이터 가져오기 함수
-function fetchStocksByDate(period, stockName) {
+function fetchStocksByDate(period) {
+    let stockName = document.getElementById('stockNameSelect').value || selectedStockName;
+    if (!stockName) {
+        console.error('Stock name is undefined');
+        return;
+    }
+
     fetch(`http://localhost:8000/api/stockData?selectedStockName=${stockName}&period=${period}`)
         .then(response => response.json())
         .then(data => {
-            drawChart(data); // 차트 그리기
+            drawChart(data);
         })
         .catch(error => console.error('Error:', error));
 }
@@ -13,7 +19,7 @@ let chartInstance = null; // 차트 인스턴스를 저장하기 위한 전역 �
 // 차트 생성 함수
 function createChart(ctx, labels, dataPoints, backgroundColors) {
     return new Chart(ctx, {
-        type: 'line', // 차트의 종류 (예: line, bar, pie 등)
+        type: 'line',
         data: {
             labels: labels,
             datasets: [{
@@ -37,80 +43,65 @@ function createChart(ctx, labels, dataPoints, backgroundColors) {
 // 차트 그리기 함수
 function drawChart(data) {
     const ctx = document.getElementById('stockChart').getContext('2d');
-
-    // 기존 차트가 존재한다면 파괴
     if (chartInstance) {
         chartInstance.destroy();
     }
 
-    const labels = data.map(item => item['Date']); // 날짜 데이터
-    const dataPoints = data.map(item => item['Close']); // 종가 데이터
+    const labels = data.map(item => item['Date']);
+    const dataPoints = data.map(item => item['Close']);
+    const backgroundColors = dataPoints.map((_, index) => index >= dataPoints.length - 10 ? 'rgba(255, 0, 0, 0.5)' : 'rgba(0, 123, 255, 0.5)');
 
-    const backgroundColors = dataPoints.map((_, index) => {
-        if (index >= dataPoints.length - 10) {
-            return 'rgba(255, 0, 0, 0.5)'; // 빨간색
-        } else {
-            return 'rgba(0, 123, 255, 0.5)'; // 파란색
-        }
-    });
-    // 새 차트 생성
     chartInstance = createChart(ctx, labels, dataPoints, backgroundColors);
 }
 
-// 검색 로직
-let selectedStockName = ""; // 선택된 주식명 저장
 
+// 검색 로직
 if (document.getElementById('searchButtonSelect')) {
     document.getElementById('searchButtonSelect').addEventListener('click', function(event) {
         event.preventDefault();
         selectedStockName = document.getElementById('stockNameSelect').value;
-
-        fetch(`http://localhost:8000/api/stock?name=${selectedStockName}`)
-            .then(response => response.json())
-            .then(data => {
-                updateTable(data);
-            })
-            .catch(error => console.error('Error:', error));
+        if (selectedStockName) {
+            fetchStocksByDate('1week', selectedStockName); // 기본으로 1주일 기간을 설정하여 차트 생성
+        } else {
+            console.error('No stock name entered');
+        }
     });
 }
 
-// 데이터 테이블 업데이트 함수
-function updateTable(data) {
-    var tableBody = document.querySelector('table tbody');
-    tableBody.innerHTML = '';
-    var row = `
-        <tr>
-                <td>${stock.Name}</td>
-                <td>${stock.Close}</td>
-                <td>${stock.Open}</td>
-                <td>${stock.High}</td>
-                <td>${stock.Low}</td>
-                <td>${stock.Volume}</td>
-                <td>${stock.Changes}</td>
-            </tr>
-    `;
-    tableBody.innerHTML = row;
-}
 
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    let selectedStockName = urlParams.get('name');
+    let urlStockName = urlParams.get('name');
+    const stockNameHeader = document.getElementById('stockTitle');
 
-    if (!selectedStockName) {
-        // 세션에 저장된 주식명이 없는 경우 서버에서 주식 목록을 가져옴
+    if (!urlStockName) {
         fetch('http://localhost:8000/api/stocks')
             .then(response => response.json())
             .then(data => {
                 if (data.length > 0) {
-                    // 첫 번째 주식을 기본 주식으로 설정
                     selectedStockName = data[0].Name;
                 }
-                fetchStocksByDate('1week', selectedStockName); // 기본 기간 설정
+                stockNameHeader.textContent = selectedStockName || '주식 선택 필요';
+                fetchStocksByDate('1week', selectedStockName);
             })
             .catch(error => console.error('Error:', error));
     } else {
-        // 세션에 저장된 주식명이 있는 경우 해당 주식 데이터 로드
-        fetchStocksByDate('1week', selectedStockName); // 기본 기간 설정
+        selectedStockName = urlStockName;
+        stockNameHeader.textContent = selectedStockName;
+        fetchStocksByDate('1week', selectedStockName);
     }
 });
 
+if (document.getElementById('searchButtonSelect')) {
+    document.getElementById('searchButtonSelect').addEventListener('click', function(event) {
+        event.preventDefault();
+        let inputStockName = document.getElementById('stockNameSelect').value;
+        if (inputStockName) {
+            selectedStockName = inputStockName;
+            document.getElementById('stockTitle').textContent = selectedStockName; // Update h2 content
+            fetchStocksByDate('1week', selectedStockName);
+        } else {
+            console.error('No stock name entered');
+        }
+    });
+}

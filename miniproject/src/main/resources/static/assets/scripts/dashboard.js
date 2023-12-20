@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Assuming data is an array and you want to show the 'Close' value of the first item
     if (data.length > 0) {
-      kospiCloseElement.textContent = data[5].Close;
+      kospiCloseElement.textContent = data[data.length -1].Close;
     } else {
       console.error("No data available.");
     }
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Assuming data is an array and you want to show the 'Close' value of the first item
     if (data.length > 0) {
-      kospiCloseElement.textContent = data[5].Open;
+      kospiCloseElement.textContent = data[data.length -1].Open;
     } else {
       console.error("No data available.");
     }
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Assuming data is an array and you want to show the 'Close' value of the first item
     if (data.length > 0) {
-      const ratio = data[5].Close - data[4].Close;
+      const ratio = data[data.length -1].Close - data[data.length -2].Close;
       const roundedRatio = Math.round(ratio * 100) / 100;
       kospiCloseElement.textContent = roundedRatio.toString();
     } else {
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Assuming data is an array and you want to show the 'Close' value of the first item
     if (data.length > 0) {
-      const ratio = data[5].Close / data[4].Close;
+      const ratio = data[data.length -1].Close / data[data.length -2].Close;
       const roundedRatio = Math.round(ratio * 10000) / 10000; // Round to 4 decimal places
       kospiCloseElement.textContent = roundedRatio.toString() + "%";
     } else {
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Assuming data is an array and you want to show the 'Close' value of the first item
     if (data.length > 0) {
-      const ratio = data[5].Open / data[4].Open;
+      const ratio = data[data.length -1].Open / data[data.length -2].Open;
       const roundedRatio = Math.round(ratio * 10000) / 10000; // Round to 4 decimal places
       kospiOpenElement.textContent = roundedRatio.toString() + "%";
     } else {

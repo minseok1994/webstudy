@@ -57,8 +57,11 @@
             </a>
         </div>
         <div class="container-fluid">
-        <div class="navbar-btn">
-        </div>
+          <div class="navbar-btn">
+            <button type="button" class="btn-toggle-fullwidth">
+              <i class="lnr lnr-arrow-left-circle"></i>
+            </button>
+          </div>
             
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
@@ -77,9 +80,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                     ><img
-                        src=""
-                        class="img-circle"
-                        alt="Avatar" />
+                    src="assets/img/user.png"
+                    class="img-circle"
+                    alt="Avatar" />
                     <span>Samuel</span>
                     <i class="icon-submenu lnr lnr-chevron-down"></i
                     ></a>
@@ -105,6 +108,11 @@
                         >
                     </li>
                     </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span id="currentDateTime"></span>
+                  </a>
                 </li>
             </ul>
         </div>
@@ -529,6 +537,7 @@
     </script>
 <script src="assets/scripts/dashboard.js"></script>
 <script src="assets/scripts/bar.js"></script>
+<script src="assets/scripts/time.js"></script>
 
 
 </body>

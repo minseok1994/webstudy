@@ -9,7 +9,7 @@
 div.panel {
   border: 1px solid #ddd;
   border-radius: 5px;
-  height: 400px; /* 원하는 높이로 설정 */
+  height: 100%; /* 원하는 높이로 설정 */
   overflow: auto; /* 내부 내용이 넘칠 경우 스크롤바를 추가 */
 }
 

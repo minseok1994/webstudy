@@ -186,6 +186,12 @@ html.fullscreen-bg #wrapper {
     .navbar-default #navbar-menu {
       float: right; } }
 
+
+.my-table th {
+  background-color: #337ab7;
+          color: #fff;
+          border-bottom: 2px solid #ddd;
+}
 .navbar-btn {
   float: left;
   padding: 16px 0; }

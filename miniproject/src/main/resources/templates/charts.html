@@ -46,7 +46,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="index">
+                <a href="/">
                 <h1>PrediStocks</h1>
                 </a>
             </div>
@@ -145,67 +145,21 @@
     <!-- MAIN -->
     <div class="main">
         <!-- MAIN CONTENT -->
-        <canvas id="myChart" width="400" height="200"></canvas>
+        <div class="search">
+            <input type="text" id="stockNameSelect" placeholder="기업명 검색">
+            <button id="searchButtonSelect">검색</button>
+        </div>
+        
+        <button onclick="fetchStocksByDate('1week')">1주일</button>
+        <button onclick="fetchStocksByDate('1month')">1달</button>
+        <button onclick="fetchStocksByDate('3months')">3달</button>
+        <button onclick="fetchStocksByDate('6months')">6달</button>
+        <button onclick="fetchStocksByDate('1year')">1년</button>
+        
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw;">
+        <canvas id="stockChart" width="350" height="150"></canvas>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-
-        <script>
-            const stockData = [
-                { x: "2023-07-31", y: 71500.0 },
-                { x: "2023-08-01", y: 71500.0 },
-                { x: "2023-08-02", y: 71300.0 },
-                { x: "2023-08-03", y: 71100.0 },
-                { x: "2023-08-04", y: 71100.0 },
-            ];
-            const ctx = document.getElementById("myChart").getContext("2d");
-            const myChart = new Chart(ctx, {
-                    type: "line",
-                    data: {
-              // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [
-                    {
-                    label: "주식 가격",
-                    data: stockData,
-                    backgroundColor: "rgba(255, 99, 132, 0.2)",
-                    borderColor: "rgba(255, 99, 132, 1)",
-                    borderWidth: 2,
-                    pointRadius: 3,
-                    pointBackgroundColor: "rgba(255, 99, 132, 1)",
-                    fill: true,
-                    },
-                ],
-            },
-            options: {
-                scales: {
-                    // x: {
-                    //   type: "time",
-                    //   time: {
-                    //     unit: "day",
-                    //     tooltipFormat: "YYYY-MM-DD",
-                    //   },
-                    // },
-                    y: {
-                    beginAtZero: false,
-                    },
-                },
-                plugins: {
-                    tooltip: {
-                    callbacks: {
-                        label: (context) =>
-                        new Intl.NumberFormat("en-US", {
-                            style: "currency",
-                            currency: "KRW",
-                        }).format(context.parsed.y),
-                    },
-                    },
-                },
-                elements: {
-                    line: {
-                    tension: 0.2,
-                    },
-                },
-                },
-            });
-        </script>
+        </div>
         <!-- END MAIN CONTENT -->
     </div>
     <!-- END MAIN -->
@@ -221,7 +175,7 @@
     </div>
     <!-- END WRAPPER -->
     <!-- Javascript -->
-    <script src="assets/scripts/search.js"></script>
+    <script src="assets/scripts/chartfunc.js"></script>
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>

@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.miniproject.config.auth.CustomAuthenticationEntryPoint;
 import com.example.miniproject.config.auth.CustomAuthenticationFailureHandler;
 import com.example.miniproject.config.auth.CustomAuthenticationSuccessHandler;
 
@@ -32,7 +33,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/user/**").authenticated() // 인증이되면 접근 가능
+                        .requestMatchers("/charts/**").authenticated() // 인증이되면 접근 가능
                         .requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER") // 인증&인가가 되면 접근 가능
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") // 인증&인가가 되면 접근 가능
                         .anyRequest().permitAll() // 누구나 접근 가능
@@ -42,7 +43,9 @@ public class SecurityConfig {
                         .loginProcessingUrl("/login") // login 주소가 호출이 되면, PrincipalDetailsService.loadUserByUsername()
                         .successHandler(new CustomAuthenticationSuccessHandler()) // 성공 핸들러 추가
                         .failureHandler(new CustomAuthenticationFailureHandler()) // 여기에 핸들러 추가
-                        .permitAll());
+                        .permitAll())
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .authenticationEntryPoint(new CustomAuthenticationEntryPoint()));
 
         return http.build();
     }

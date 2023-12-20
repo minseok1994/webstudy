@@ -10,44 +10,49 @@
     />
     <!-- VENDOR CSS -->
     <link
-        rel="stylesheet"
-        href="assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+    href="assets/vendor/bootstrap/css/bootstrap.min.css"
     />
     <link
-        rel="stylesheet"
-        href="assets/vendor/font-awesome/css/font-awesome.min.css"
+    rel="stylesheet"
+    href="assets/vendor/font-awesome/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="assets/vendor/linearicons/style.css" />
+    <link rel="stylesheet" href="assets/css/table.css" />
+    <link
+    rel="stylesheet"
+    href="assets/vendor/chartist/css/chartist-custom.css"
+    />
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
     <!-- GOOGLE FONTS -->
     <link
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
-        rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+    rel="stylesheet"
     />
     <!-- ICONS -->
     <link
-        rel="apple-touch-icon"
-        sizes="76x76"
-        href="assets/img/apple-icon.png"
+    rel="apple-touch-icon"
+    sizes="76x76"
+    href="assets/img/apple-icon.png"
     />
     <link
-        rel="icon"
-        type="image/png"
-        sizes="96x96"
-        href="assets/img/favicon.png"
+    rel="icon"
+    type="image/png"
+    sizes="96x96"
+    href="assets/img/favicon.png"
     />
 </head>
 
-<body>
+<body class="index-page">
     <!-- WRAPPER -->
     <div id="wrapper">
     <!-- NAVBAR -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="index">
+            <a href="/">
             <h1>PrediStocks</h1>
             </a>
         </div>
@@ -209,7 +214,7 @@
                 <div class="col col-5">저가</div>
                 <div class="col col-6">거래량</div>
                 <div class="col col-7">등락율</div>
-                </li>   
+                </li>
                 <li class="table-row">
                 <div class="col col-1" data-label="name">삼성전자</div>
                 <div class="col col-2" data-label="close">70000</div>
@@ -248,7 +253,6 @@
                 </li>
             </ul>
             </div>
-            <script src="./table.js"></script>
         </div>
         <!-- END OVERVIEW -->
         <div class="row">
@@ -276,37 +280,8 @@
                         <th>Change</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td><a href="#">763648</a></td>
-                        <td>삼성전자</td>
-                        <td>$122</td>
-                        <td>30%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">763649</a></td>
-                        <td>LG화학</td>
-                        <td>$62</td>
-                        <td>27%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">763650</a></td>
-                        <td>Michael</td>
-                        <td>$34</td>
-                        <td>22%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">763651</a></td>
-                        <td>Roger</td>
-                        <td>$186</td>
-                        <td>15%</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">763652</a></td>
-                        <td>Smith</td>
-                        <td>$362</td>
-                        <td>11%</td>
-                    </tr>
+                    <tbody id ="mytable">
+
                     </tbody>
                 </table>
                 </div>
@@ -350,37 +325,8 @@
                         <th>Change</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                        <td><a href="#">763648</a></td>
-                        <td>Steve</td>
-                        <td>$122</td>
-                        <td>-15%</td>
-                        </tr>
-                        <tr>
-                        <td><a href="#">763649</a></td>
-                        <td>Amber</td>
-                        <td>$62</td>
-                        <td>-12%</td>
-                        </tr>
-                        <tr>
-                        <td><a href="#">763650</a></td>
-                        <td>Michael</td>
-                        <td>$34</td>
-                        <td>-10%</td>
-                        </tr>
-                        <tr>
-                        <td><a href="#">763651</a></td>
-                        <td>Roger</td>
-                        <td>$186</td>
-                        <td>-9%</td>
-                        </tr>
-                        <tr>
-                        <td><a href="#">763652</a></td>
-                        <td>Smith</td>
-                        <td>$362</td>
-                        <td>-5%</td>
-                        </tr>
+                    <tbody id ="mytable2">
+
                     </tbody>
                     </table>
                 </div>
@@ -458,8 +404,8 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/klorofil-common.js"></script>
+    <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script>
     $(function () {
         var data, options;
@@ -597,5 +543,7 @@
         }
     });
     </script>
+<script src="assets/scripts/dashboard.js"></script>
+
 </body>
 </html>

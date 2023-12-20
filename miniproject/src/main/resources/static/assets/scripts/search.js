@@ -17,7 +17,7 @@ function updateTableWithAllStocks(data) {
     data.forEach((stock, index) => {
         var row = `
             <tr>
-                <td>${index + 1}</td>
+                <td>1</td>
                 <td>${stock.Name}</td>
                 <td>${stock.Close}</td>
                 <td>${stock.Open}</td>
@@ -54,14 +54,15 @@ function updateTable(data) {
     tableBody.innerHTML = '';
     var row = `
         <tr>
-            <td>${data.Name}</td>
-            <td>${data.Close}</td>
-            <td>${data.Open}</td>
-            <td>${data.High}</td>
-            <td>${data.Low}</td>
-            <td>${data.Volume}</td>
-            <td>${data.Changes}</td>
-        </tr>
+                <td>${index + 1}</td>
+                <td>${stock.Name}</td>
+                <td>${stock.Close}</td>
+                <td>${stock.Open}</td>
+                <td>${stock.High}</td>
+                <td>${stock.Low}</td>
+                <td>${stock.Volume}</td>
+                <td>${stock.Changes}</td>
+            </tr>
     `;
     tableBody.innerHTML = row;
 }

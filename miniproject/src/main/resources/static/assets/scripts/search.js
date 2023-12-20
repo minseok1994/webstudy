@@ -1,41 +1,3 @@
-// 전체 데이터 출력 로직
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.body.classList.contains('main-page')) {
-        initializePagination();
-        
-        fetch(`http://localhost:8000/api/stocks`)
-            .then(response => response.json())
-            .then(data => updateTableWithAllStocks(data))
-            .catch(error => console.error('Error:', error));
-    }
-});
-
-// 전체 데이터 테이블 업데이트 함수
-function updateTableWithAllStocks(data) {
-    var tableBody = document.querySelector('table tbody');
-    tableBody.innerHTML = '';
-    data.forEach((stock) => {
-        var row = `
-            <tr>
-                <td class="stock-name" data-name="${stock.Name}">${stock.Name}</td>
-                <td>${stock.Close}</td>
-                <td>${stock.Open}</td>
-                <td>${stock.High}</td>
-                <td>${stock.Low}</td>
-                <td>${stock.Volume}</td>
-                <td>${stock.Changes}</td>
-            </tr>
-        `;
-        tableBody.innerHTML += row;
-    });
-
-    document.querySelectorAll('.stock-name').forEach(item => {
-        item.addEventListener('click', function() {
-            window.location.href = `charts.html?name=${this.dataset.name}`;
-        });
-    });
-}
-
 // 검색 로직
 let selectedStockName = ""; // 선택된 주식명 저장
 
@@ -146,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.body.classList.contains('main-page')) {
         initializePagination();
         fetchPageData(0);
+        startAutoRefresh(); 
     }
 });
 
@@ -179,6 +142,12 @@ function updateTableWithStocks(data, clearTable = true) {
     createPagination();
     
 
+// 10초마다 페이지 데이터를 가져오는 함수를 시작하는 함수
+function startAutoRefresh() {
+    setInterval(() => {
+        fetchPageData(currentPage); // 현재 페이지 번호를 사용하여 데이터 가져오기
+    }, 10000); // 10000ms = 10초
+}
 
 // 날짜별 데이터 가져오기 함수 (select.html용)
 function fetchStocksByDate(period) {

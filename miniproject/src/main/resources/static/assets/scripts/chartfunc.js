@@ -107,13 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
           selectedStockName = data[0].Name;
         }
         stockNameHeader.textContent = selectedStockName || "주식 선택 필요";
-        fetchStocksByDate("1week", selectedStockName);
+        fetchStocksByDate("3months", selectedStockName);
       })
       .catch((error) => console.error("Error:", error));
   } else {
     selectedStockName = urlStockName;
     stockNameHeader.textContent = selectedStockName;
-    fetchStocksByDate("1week", selectedStockName);
+    fetchStocksByDate("3months", selectedStockName);
   }
 });
 

@@ -1,4 +1,4 @@
-package com.example.miniproject.config.auth;
+package com.example.miniproject.config.handler;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

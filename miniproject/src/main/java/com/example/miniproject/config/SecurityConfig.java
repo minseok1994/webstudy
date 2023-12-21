@@ -8,10 +8,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.miniproject.config.auth.CustomAuthenticationEntryPoint;
-import com.example.miniproject.config.auth.CustomAuthenticationFailureHandler;
-import com.example.miniproject.config.auth.CustomAuthenticationSuccessHandler;
+import com.example.miniproject.config.handler.CustomAuthenticationEntryPoint;
+import com.example.miniproject.config.handler.CustomAuthenticationFailureHandler;
+import com.example.miniproject.config.handler.CustomAuthenticationSuccessHandler;
+import com.example.miniproject.config.handler.CustomRequestCacheFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -32,6 +34,7 @@ public class SecurityConfig {
         log.info("[SecurityConfig][filterChain] start");
         http.csrf(AbstractHttpConfigurer::disable);
         http
+                .addFilterBefore(new CustomRequestCacheFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/charts/**").authenticated() // 인증이되면 접근 가능
                         .requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER") // 인증&인가가 되면 접근 가능

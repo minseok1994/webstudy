@@ -63,10 +63,11 @@
 
 .table th,
 .table td {
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   vertical-align: middle;
   border-top: 1px solid #ddd;
+  overflow: hidden;
 }
 
 .table thead th {
@@ -129,19 +130,21 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.table td:hover {
+
+.table tr {
+  transition: background-color 0.4s ease;
+}
+
+.table tr:hover {
   background-color: #87cefa;
   color: #403e10;
   font-weight: bold;
-  box-shadow: #7f7c21 -1px 1px, #7f7c21 -2px 2px, #7f7c21 -3px 3px,
-    #7f7c21 -4px 4px, #7f7c21 -5px 5px, #7f7c21 -6px 6px;
-  transform: translate3d(3px, -3px, 0);
-  transition-delay: 0s;
-  transition-duration: 0.4s;
-  transition-property: all;
-  transition-timing-function: line;
+  /* box-shadow: #87cefa -1px 1px, #87cefa -2px 2px, #87cefa -3px 3px,
+    #87cefa -4px 4px, #87cefa -5px 5px, #87cefa -6px 6px;
+  transform: translate3d(0, 0, 0); */
 }
-
 #pagination button:nth-of-type(1):hover {
   background-color: #23527c;
 }
+
+/*  */

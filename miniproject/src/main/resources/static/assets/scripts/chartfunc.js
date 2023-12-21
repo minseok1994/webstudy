@@ -21,6 +21,8 @@ let chartInstance = null; // 차트 인스턴스를 저장하기 위한 전역 �
 
 // 차트 생성 함수
 function createChart(ctx, labels, dataPoints, backgroundColors) {
+  const todayDateIndex = labels.indexOf(getTodayDateString()); // 오늘 날짜의 인덱스 찾기
+
   return new Chart(ctx, {
     type: "line",
     data: {
@@ -31,8 +33,9 @@ function createChart(ctx, labels, dataPoints, backgroundColors) {
           data: dataPoints,
           backgroundColor: backgroundColors,
           borderColor: "rgba(0, 123, 255, 1)",
-          borderWidth: 2, // 선의 굵기
-          pointRadius: 0, // 점의 크기 (0으로 설정하여 점을 숨김)
+          borderWidth: 2,
+          pointRadius: 2,
+          pointBackgroundColor: "rgba(0, 123, 255, 1)",
         },
       ],
     },
@@ -42,23 +45,49 @@ function createChart(ctx, labels, dataPoints, backgroundColors) {
           beginAtZero: false,
           ticks: {
             callback: function (value, index, values) {
-              return value.toFixed(2); // y 축 레이블 소수점 자릿수 조절
+              return value.toFixed(2);
             },
           },
         },
       },
       plugins: {
         legend: {
-          display: false, // 범례 숨김
+          display: false,
         },
       },
       elements: {
         line: {
-          tension: 0.3, // 곡선의 텐션 조절
+          tension: 0.3,
         },
+      },
+      annotation: {
+        annotations: [
+          {
+            type: "line",
+            mode: "vertical",
+            scaleID: "x",
+            value: todayDateIndex, // 오늘 날짜의 인덱스를 사용
+            borderColor: "rgba(255, 0, 0, 0.5)",
+            borderWidth: 2,
+            label: {
+              content: "Today",
+              enabled: true,
+              position: "top",
+            },
+          },
+        ],
       },
     },
   });
+}
+
+// 오늘 날짜를 문자열로 반환하는 함수
+function getTodayDateString() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 // 차트 그리기 함수

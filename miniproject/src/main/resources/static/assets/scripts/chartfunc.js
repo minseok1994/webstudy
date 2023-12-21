@@ -31,7 +31,8 @@ function createChart(ctx, labels, dataPoints, backgroundColors) {
         {
           label: "주식 가격",
           data: dataPoints,
-          backgroundColor: backgroundColors,
+          fill: true, // 선 아래 영역을 채우도록 설정
+          backgroundColor: "rgba(0, 123, 255, 0.1)",
           borderColor: "rgba(0, 123, 255, 1)",
           borderWidth: 2,
           pointRadius: 2,
@@ -53,6 +54,10 @@ function createChart(ctx, labels, dataPoints, backgroundColors) {
       plugins: {
         legend: {
           display: false,
+        },
+        tooltip: {
+          mode: "index",
+          intersect: false,
         },
       },
       elements: {
@@ -136,13 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
           selectedStockName = data[0].Name;
         }
         stockNameHeader.textContent = selectedStockName || "주식 선택 필요";
-        fetchStocksByDate("1week", selectedStockName);
+        fetchStocksByDate("3months", selectedStockName);
       })
       .catch((error) => console.error("Error:", error));
   } else {
     selectedStockName = urlStockName;
     stockNameHeader.textContent = selectedStockName;
-    fetchStocksByDate("1week", selectedStockName);
+    fetchStocksByDate("3months", selectedStockName);
   }
 });
 
@@ -155,7 +160,7 @@ if (document.getElementById("searchButtonSelect")) {
       if (inputStockName) {
         selectedStockName = inputStockName;
         document.getElementById("stockTitle").textContent = selectedStockName; // Update h2 content
-        fetchStocksByDate("1week", selectedStockName);
+        fetchStocksByDate("3months", selectedStockName);
       } else {
         console.error("No stock name entered");
       }

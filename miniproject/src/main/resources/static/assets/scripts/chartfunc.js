@@ -116,7 +116,7 @@ if (document.getElementById("searchButtonSelect")) {
       event.preventDefault();
       selectedStockName = document.getElementById("stockNameSelect").value;
       if (selectedStockName) {
-        fetchStocksByDate("1week", selectedStockName); // 기본으로 1주일 기간을 설정하여 차트 생성
+        fetchStocksByDate("3months", selectedStockName); // 기본으로 3달을 기본으로 차트 생성
       } else {
         console.error("No stock name entered");
       }

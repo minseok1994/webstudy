@@ -1,4 +1,4 @@
-package com.example.miniproject.config.auth;
+package com.example.miniproject.config.handler;
 
 import java.io.IOException;
 

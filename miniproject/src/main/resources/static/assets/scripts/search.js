@@ -112,6 +112,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// 정렬기능
+let currentSortColumn = null;
+let currentSortDirection = 'asc'; // 'asc' or 'desc'
+
+function sortTable(columnName) {
+    // 서버에 정렬 요청
+    console.log('Sorting by: ' + columnName);
+    const sortDirection = (columnName === currentSortColumn && currentSortDirection === 'asc') ? 'desc' : 'asc';
+    fetch(`http://localhost:8000/api/stocks?sort=${columnName}&direction=${sortDirection}`)
+        .then(response => response.json())
+        .then(data => {
+            currentSortColumn = columnName;
+            currentSortDirection = sortDirection;
+            updateTableWithStocks(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 // 페이지 넘길 때 가져오는 데이터
 function updateTableWithStocks(data, clearTable = true) {
